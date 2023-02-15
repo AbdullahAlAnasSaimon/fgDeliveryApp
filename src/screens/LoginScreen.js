@@ -1,19 +1,23 @@
 import { Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useContext, useState } from 'react'
 import { StateContext } from '../context/AuthContext'
+import { useNavigation } from '@react-navigation/native';
 
 const LoginScreen = () => {
-  const {userLogin} = useContext(StateContext);
-
+  const { userLogin } = useContext(StateContext);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigation = useNavigation();
 
-  const handleUserLogin = () =>{
+  const handleUserLogin = () => {
     userLogin(email, password)
-    .then(result => {
-      const user = result.user;
-      console.log(user.email);
-    }).catch(err => Alert(err.message))
+      .then(result => {
+        const user = result.user;
+        console.log(user.email);
+        if (user) {
+          navigation.navigate("Home");
+        }
+      }).catch(err => Alert(err.message))
   }
 
   return (
@@ -22,7 +26,7 @@ const LoginScreen = () => {
       behavior="padding"
     >
       <View>
-        <Text style={{fontSize: 20, marginBottom: 10, fontWeight: 600}}>Please Login</Text>
+        <Text style={{ fontSize: 20, marginBottom: 10, fontWeight: 600 }}>Please Login</Text>
       </View>
       <View style={styles.inputContainer}>
         <TextInput
@@ -48,7 +52,7 @@ const LoginScreen = () => {
         </TouchableOpacity>
         <Text style={styles.buttonMiddleText}>OR</Text>
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={() => { }}
           style={[styles.button, styles.buttonOutline]}
         >
           <Text style={styles.buttonOutlineText}>Sign Up</Text>
@@ -100,7 +104,7 @@ const styles = StyleSheet.create({
     borderColor: '#84b840',
     borderWidth: 1
   },
-  buttonText:{
+  buttonText: {
     color: '#fff',
     fontWeight: 700,
     fontSize: 16,
