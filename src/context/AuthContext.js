@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React, { createContext, useState } from 'react';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import app from '../firebase';
+import app from '../../firebase';
 
 const auth = getAuth(app);
 export const StateContext = createContext();

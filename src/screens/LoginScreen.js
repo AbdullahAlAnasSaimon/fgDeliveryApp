@@ -1,14 +1,29 @@
-import { KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React, { useState } from 'react'
+import { Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useContext, useState } from 'react'
+import { StateContext } from '../context/AuthContext'
 
 const LoginScreen = () => {
+  const {userLogin} = useContext(StateContext);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleUserLogin = () =>{
+    userLogin(email, password)
+    .then(result => {
+      const user = result.user;
+      console.log(user.email);
+    }).catch(err => Alert(err.message))
+  }
+
   return (
     <KeyboardAvoidingView
       style={styles.container}
       behavior="padding"
     >
+      <View>
+        <Text style={{fontSize: 20, marginBottom: 10, fontWeight: 600}}>Please Login</Text>
+      </View>
       <View style={styles.inputContainer}>
         <TextInput
           placeholder='Email'
@@ -26,14 +41,14 @@ const LoginScreen = () => {
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          onPress={() => { }}
+          onPress={handleUserLogin}
           style={styles.button}
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <Text style={styles.buttonMiddleText}>OR</Text>
         <TouchableOpacity
-          onPress={() => { }}
+          onPress={() => {}}
           style={[styles.button, styles.buttonOutline]}
         >
           <Text style={styles.buttonOutlineText}>Sign Up</Text>
