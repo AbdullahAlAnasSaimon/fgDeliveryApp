@@ -1,9 +1,9 @@
-import constants from "./constants";
-import theme, { COLORS, SIZES, FONTS } from "./theme";
+import constant from "./constant";
+import appTheme, { COLORS, SIZES, FONTS } from "./theme";
 
 export {
-    constants,
-    theme,
+    constant,
+    appTheme,
     COLORS,
     SIZES,
     FONTS,

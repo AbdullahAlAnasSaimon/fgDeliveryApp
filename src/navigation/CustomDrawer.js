@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
-import { MainLayout } from '../src/screens/MainLayout';
+import { MainLayout } from '../screens/MainLayout';
 import { SIZES, COLORS, FONTS, constants } from '../constants';
 
 const Drawer = createDrawerNavigator();

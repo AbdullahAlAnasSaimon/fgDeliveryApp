@@ -4,7 +4,7 @@ import React from 'react'
 const MainLayout = () => {
   return (
     <View>
-      <Text>MainLayout</Text>
+      <Text style={{color: COLORS.primary}}>MainLayout</Text>
     </View>
   )
 }
