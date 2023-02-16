@@ -68,7 +68,7 @@ const CustomDrawer = () => {
           backgroundColor: 'transparent'
         }}
         sceneContainerStyle={{
-          backgroundColor: 'transparent',
+          backgroundColor: 'transparent'
         }}
         initialRouteName="MainLayout"
         drawerContent={props => {
