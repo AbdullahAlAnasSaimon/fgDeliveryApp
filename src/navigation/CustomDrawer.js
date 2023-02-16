@@ -123,7 +123,56 @@ const CustomDrawerContent = ({ navigation }) => {
             label={constant.screens.home}
             icon={icons.home}
           />
+          <CustomDrawerItem
+            label={constant.screens.notification}
+            icon={icons.notification}
+          />
+          <CustomDrawerItem
+            label={constant.screens.favourite}
+            icon={icons.favourite}
+          />
+          {/* line divider */}
+          <View
+          style={{
+            height: 1,
+            marginVertical: SIZES.radius,
+            marginLeft: SIZES.radius,
+            backgroundColor: COLORS.lightGray1
+          }}
+          />
+          <CustomDrawerItem
+            label="Track Your Order"
+            icon={icons.location}
+          />
+          <CustomDrawerItem
+            label="Coupons"
+            icon={icons.coupon}
+          />
+          <CustomDrawerItem
+            label="Settings"
+            icon={icons.setting}
+          />
+          <CustomDrawerItem
+            label="Invite a Friend"
+            icon={icons.profile}
+          />
+          <CustomDrawerItem
+            label="Help Center"
+            icon={icons.help}
+          />
         </View>
+
+          <View
+          style={{
+            marginBottom: SIZES.padding
+          }}
+          >
+            <CustomDrawerItem
+            label="Log Out"
+            icon={icons.logout}
+          />
+          </View>
+
       </View>
     </DrawerContentScrollView>
   )
