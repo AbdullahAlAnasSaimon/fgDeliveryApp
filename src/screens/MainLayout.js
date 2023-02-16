@@ -1,17 +1,20 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react';
+import Animated from 'react-native-reanimated';
 
-const MainLayout = () => {
+const MainLayout = ({drawerAnimationStyle}) => {
   return (
-    <View
+    <Animated.View
       style={{
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        backgroundColor: 'white',
+        ...drawerAnimationStyle
       }}
     >
       <Text>Main Layout</Text>
-    </View>
+    </Animated.View>
   )
 }
 
