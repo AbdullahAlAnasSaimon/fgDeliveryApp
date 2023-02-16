@@ -103,10 +103,12 @@ const tags = [
   }
 ]
 
-export default {
+const constant = {
   screens,
   bottom_tabs,
   delivery_time,
   ratings,
   tags
-}
+};
+
+export default constant;

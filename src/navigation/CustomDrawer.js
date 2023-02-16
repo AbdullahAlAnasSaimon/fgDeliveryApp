@@ -1,10 +1,38 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
-import { MainLayout } from '../screens/MainLayout';
-import { SIZES, COLORS, FONTS, constants } from '../constants';
+import { MainLayout } from '../screens';
+import { SIZES,  COLORS, FONTS, constant } from '../constants';
 
 const Drawer = createDrawerNavigator();
+
+const CustomDrawerContent = ({navigation}) =>{
+  return (
+    <DrawerContentScrollView
+      scrollEnabled={true}
+      contentContainerStyle={{flex: 1}}
+    >
+      <View
+      style={{
+        flex: 1,
+        paddingHorizontal: SIZES.radius
+      }}
+      >
+        {/* Close */}
+        <View
+        style={{
+          alignItems: 'flex-start',
+          justifyContent: 'center'
+        }}>
+
+        </View>
+        {/* Profile */}
+        {/* DrawerItems */}
+
+      </View>
+    </DrawerContentScrollView>
+  )
+}
 
 const CustomDrawer = () => {
   return (
@@ -27,6 +55,13 @@ const CustomDrawer = () => {
           backgroundColor: 'transparent',
         }}
         initialRouteName="MainLayout"
+        drawerContent={props => {
+          return (
+            <CustomDrawerContent
+            navigation={props.navigation}
+            />
+          )
+        }}
       >
         <Drawer.Screen name='MainLayout'>
           {props => <MainLayout {...props}/>}
