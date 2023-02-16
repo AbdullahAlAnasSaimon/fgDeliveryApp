@@ -1,16 +1,17 @@
 import { Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
-import React, { useContext, useState } from 'react'
-import { StateContext } from '../context/AuthContext'
+import React, { useContext, useState } from 'react';
+import { StateContext } from '../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
+import { useForm, Controller } from 'react-hook-form';
 
 const LoginScreen = () => {
   const { userLogin } = useContext(StateContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   const navigation = useNavigation();
+  const { control, handleSubmit, formState: { errors } } = useForm();
 
-  const handleUserLogin = () => {
-    userLogin(email, password)
+  const onSubmit = (data) => {
+    console.log(data);
+    userLogin(data.email, data.password)
       .then(result => {
         const user = result.user;
         console.log(user.email);
@@ -19,6 +20,7 @@ const LoginScreen = () => {
         }
       }).catch(err => Alert(err.message))
   }
+
 
   return (
     <KeyboardAvoidingView
@@ -29,23 +31,32 @@ const LoginScreen = () => {
         <Text style={{ fontSize: 20, marginBottom: 10, fontWeight: 600 }}>Please Login</Text>
       </View>
       <View style={styles.inputContainer}>
-        <TextInput
-          placeholder='Email'
-          value={email}
-          onChangeText={text => setEmail(text)}
-          style={styles.input}
+        <Controller
+          control={control}
+          name="email"
+          rules={{ required: "*Email is required" }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              placeholder="Email"
+              onChangeText={onChange}
+              onBlur={onBlur}
+              value={value}
+            />
+          )}
         />
+        {errors.email && <Text style={{ color: 'red', fontSize: 12 }}>{errors.email.message}</Text>}
         <TextInput
           placeholder='Password'
-          value={password}
-          onChangeText={text => setPassword(text)}
+          // value={password}
+          // onChangeText={text => setPassword(text)}
           style={styles.input}
           secureTextEntry
         />
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          onPress={handleUserLogin}
+          onPress={handleSubmit(onSubmit)}
           style={styles.button}
         >
           <Text style={styles.buttonText}>Login</Text>
