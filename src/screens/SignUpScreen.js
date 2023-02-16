@@ -11,14 +11,18 @@ const SignUpScreen = () => {
 
   const onSubmit = (data) => {
     console.log(data);
-    userSignUp(data.email, data.password)
-      .then(result => {
-        const user = result.user;
-        console.log(user.email);
-        if (user) {
-          navigation.navigate("Home");
-        }
-      }).catch(err => Alert(err.message))
+    if(data.password === data.confirmPassword){
+      userSignUp(data.email, data.password)
+        .then(result => {
+          const user = result.user;
+          console.log(user.email);
+          if (user) {
+            navigation.navigate("Home");
+          }
+        }).catch(err => Alert(err.message))
+    }else{
+      return;
+    }
   }
 
   return (
@@ -83,14 +87,14 @@ const SignUpScreen = () => {
           onPress={handleSubmit(onSubmit)}
           style={styles.button}
         >
-          <Text style={styles.buttonText}>Login</Text>
+          <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
         <Text style={styles.buttonMiddleText}>OR</Text>
         <TouchableOpacity
           onPress={() => { }}
           style={[styles.button, styles.buttonOutline]}
         >
-          <Text style={styles.buttonOutlineText}>Sign Up</Text>
+          <Text style={styles.buttonOutlineText}>Log In</Text>
         </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
@@ -99,4 +103,54 @@ const SignUpScreen = () => {
 
 export default SignUpScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  inputContainer: {
+    width: '80%'
+  },
+  input: {
+    backgroundColor: '#fff',
+    paddingHorizontal: 1,
+    paddingVertical: 10,
+    borderRadius: 5,
+    marginTop: 15,
+    paddingLeft: 10,
+    paddingRight: 10
+  },
+  buttonContainer: {
+    width: '80%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 40
+  },
+  button: {
+    backgroundColor: '#84b840',
+    width: '100%',
+    padding: 10,
+    borderRadius: 5,
+    alignItems: 'center'
+  },
+  buttonMiddleText: {
+    marginTop: 10
+  },
+  buttonOutline: {
+    backgroundColor: '#fff',
+    marginTop: 10,
+    borderColor: '#84b840',
+    borderWidth: 1
+  },
+  buttonText: {
+    color: '#fff',
+    fontWeight: 700,
+    fontSize: 16,
+  },
+  buttonOutlineText: {
+    color: '#84b840',
+    fontWeight: 700,
+    fontSize: 16,
+  },
+})
