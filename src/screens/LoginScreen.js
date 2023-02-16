@@ -46,13 +46,22 @@ const LoginScreen = () => {
           )}
         />
         {errors.email && <Text style={{ color: 'red', fontSize: 12 }}>{errors.email.message}</Text>}
-        <TextInput
-          placeholder='Password'
-          // value={password}
-          // onChangeText={text => setPassword(text)}
-          style={styles.input}
-          secureTextEntry
+        <Controller
+          control={control}
+          name="password"
+          rules={{ required: "*Password is required" }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <TextInput
+              style={styles.input}
+              placeholder="Password"
+              onChangeText={onChange}
+              onBlur={onBlur}
+              value={value}
+              secureTextEntry
+            />
+          )}
         />
+        {errors.password && <Text style={{ color: 'red', fontSize: 12 }}>{errors.password.message}</Text>}
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
