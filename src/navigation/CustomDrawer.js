@@ -8,6 +8,39 @@ import logo from '../assets/logo/logo-text.png';
 
 const Drawer = createDrawerNavigator();
 
+const CustomDrawerItem = ({label, icon}) =>{
+  return (
+    <TouchableOpacity
+    style={{
+      flexDirection: 'row',
+      height: 40,
+      marginBottom: SIZES.base,
+      alignItems: 'center',
+      paddingLeft: SIZES.radius,
+      borderRadius: SIZES.base,
+      // backgroundColor
+    }}
+    // onPress
+    >
+      <Image
+      source={icon}
+      style={{
+        width: 20,
+        height: 20,
+        tintColor: COLORS.white
+      }}
+      />
+      <Text
+      style={{
+        marginLeft: 15,
+        color: COLORS.white,
+        ...FONTS.h3
+      }}
+      >{label}</Text>
+    </TouchableOpacity>
+  )
+}
+
 const CustomDrawerContent = ({ navigation }) => {
   return (
     <DrawerContentScrollView
@@ -53,33 +86,44 @@ const CustomDrawerContent = ({ navigation }) => {
           onPress={() => console.log("profile")}
         >
           <Image
-          source={logo}
-          style={{
-            width: 50,
-            height: 50,
-            borderRadius: SIZES.radius
-          }}
+            source={logo}
+            style={{
+              width: 50,
+              height: 50,
+              borderRadius: SIZES.radius
+            }}
           />
           <View
-          style={{
-            marginLeft: SIZES.radius
-          }}>
+            style={{
+              marginLeft: SIZES.radius
+            }}>
             <Text
-            style={{
-              color: COLORS.white, 
-              ...FONTS.h3
-            }}
+              style={{
+                color: COLORS.white,
+                ...FONTS.h3
+              }}
             >Abdullah Al Anas Saimon</Text>
-            <Text 
-            style={{
-              color: COLORS.white,
-              ...FONTS.body4
-            }}
+            <Text
+              style={{
+                color: COLORS.white,
+                ...FONTS.body4
+              }}
             >View your profile</Text>
           </View>
         </TouchableOpacity>
-        {/* DrawerItems */}
 
+        {/* DrawerItems */}
+        <View
+        style={{
+          flex: 1,
+          marginTop: SIZES.padding
+        }}
+        >
+          <CustomDrawerItem
+            label={constant.screens.home}
+            icon={icons.home}
+          />
+        </View>
       </View>
     </DrawerContentScrollView>
   )
