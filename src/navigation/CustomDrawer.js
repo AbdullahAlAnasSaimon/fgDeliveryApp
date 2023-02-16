@@ -60,6 +60,23 @@ const CustomDrawerContent = ({ navigation }) => {
             borderRadius: SIZES.radius
           }}
           />
+          <View
+          style={{
+            marginLeft: SIZES.radius
+          }}>
+            <Text
+            style={{
+              color: COLORS.white, 
+              ...FONTS.h3
+            }}
+            >Abdullah Al Anas Saimon</Text>
+            <Text 
+            style={{
+              color: COLORS.white,
+              ...FONTS.body4
+            }}
+            >View your profile</Text>
+          </View>
         </TouchableOpacity>
         {/* DrawerItems */}
 
