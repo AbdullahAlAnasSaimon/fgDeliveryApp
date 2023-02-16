@@ -2,29 +2,30 @@ import React from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
 import { MainLayout } from '../screens';
-import { SIZES,  COLORS, FONTS, constant } from '../constants';
+import { SIZES, COLORS, FONTS, constant } from '../constants';
 import icons from '../constants/icons';
+import logo from '../assets/logo/logo-text.png';
 
 const Drawer = createDrawerNavigator();
 
-const CustomDrawerContent = ({navigation}) =>{
+const CustomDrawerContent = ({ navigation }) => {
   return (
     <DrawerContentScrollView
       scrollEnabled={true}
-      contentContainerStyle={{flex: 1}}
+      contentContainerStyle={{ flex: 1 }}
     >
       <View
-      style={{
-        flex: 1,
-        paddingHorizontal: SIZES.radius
-      }}
+        style={{
+          flex: 1,
+          paddingHorizontal: SIZES.radius
+        }}
       >
         {/* Close */}
         <View
-        style={{
-          alignItems: 'flex-start',
-          justifyContent: 'center'
-        }}>
+          style={{
+            alignItems: 'flex-start',
+            justifyContent: 'center'
+          }}>
           <TouchableOpacity
             style={{
               alignItems: "center",
@@ -33,16 +34,33 @@ const CustomDrawerContent = ({navigation}) =>{
             onPress={() => navigation.closeDrawer()}
           >
             <Image
-            source={icons.cross}
-            style={{
-              height: 35,
-              width: 35,
-              tintColor: COLORS.primary
-            }}
+              source={icons.cross}
+              style={{
+                height: 35,
+                width: 35,
+                tintColor: COLORS.primary
+              }}
             />
           </TouchableOpacity>
         </View>
         {/* Profile */}
+        <TouchableOpacity
+          style={{
+            flexDirection: 'row',
+            marginTop: SIZES.radius,
+            alignItems: 'center'
+          }}
+          onPress={() => console.log("profile")}
+        >
+          <Image
+          source={logo}
+          style={{
+            width: 50,
+            height: 50,
+            borderRadius: SIZES.radius
+          }}
+          />
+        </TouchableOpacity>
         {/* DrawerItems */}
 
       </View>
@@ -59,7 +77,7 @@ const CustomDrawer = () => {
       }}
     >
       <Drawer.Navigator
-        drawerType="slide"
+        drawerType='slide'
         overlayColor="transparent"
         drawerStyle={{
           flex: 1,
@@ -74,14 +92,14 @@ const CustomDrawer = () => {
         drawerContent={props => {
           return (
             <CustomDrawerContent
-            navigation={props.navigation}
+              navigation={props.navigation}
             />
           )
         }}
       >
-        
+
         <Drawer.Screen name='MainLayout'>
-          {props => <MainLayout {...props}/>}
+          {props => <MainLayout {...props} />}
         </Drawer.Screen>
 
       </Drawer.Navigator>
