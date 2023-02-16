@@ -3,6 +3,8 @@ import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
 import { MainLayout } from '../screens';
 import { SIZES,  COLORS, FONTS, constant } from '../constants';
+import icons from '../constants/icons';
+import cross from '../assets/icons/cross.png';
 
 const Drawer = createDrawerNavigator();
 
@@ -24,7 +26,22 @@ const CustomDrawerContent = ({navigation}) =>{
           alignItems: 'flex-start',
           justifyContent: 'center'
         }}>
-
+          <TouchableOpacity
+            style={{
+              alignItems: "center",
+              justifyContent: "center"
+            }}
+            onPress={() => navigation.closeDrawer()}
+          >
+            <Image
+            source={cross}
+            style={{
+              height: 35,
+              width: 35,
+              tintColor: COLORS.white
+            }}
+            />
+          </TouchableOpacity>
         </View>
         {/* Profile */}
         {/* DrawerItems */}
