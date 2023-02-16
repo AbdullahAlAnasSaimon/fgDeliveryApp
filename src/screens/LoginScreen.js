@@ -1,4 +1,4 @@
-import { Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { Alert, Button, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useContext, useState } from 'react';
 import { StateContext } from '../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
@@ -72,7 +72,7 @@ const LoginScreen = () => {
         </TouchableOpacity>
         <Text style={styles.buttonMiddleText}>OR</Text>
         <TouchableOpacity
-          onPress={() => { }}
+          onPress={() => navigation.navigate("SignUp")}
           style={[styles.button, styles.buttonOutline]}
         >
           <Text style={styles.buttonOutlineText}>Sign Up</Text>
