@@ -9,8 +9,7 @@ const LoginScreen = () => {
   const navigation = useNavigation();
   const { control, handleSubmit, formState: { errors } } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const handleLogIn = (data) => {
     userLogin(data.email, data.password)
       .then(result => {
         const user = result.user;
@@ -65,18 +64,22 @@ const LoginScreen = () => {
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          onPress={handleSubmit(onSubmit)}
+          onPress={handleSubmit(handleLogIn)}
           style={styles.button}
         >
           <Text style={styles.buttonText}>Login</Text>
         </TouchableOpacity>
         <Text style={styles.buttonMiddleText}>OR</Text>
         <TouchableOpacity
-          onPress={() => navigation.navigate("SignUp")}
+          onPress={() => {}}
           style={[styles.button, styles.buttonOutline]}
         >
-          <Text style={styles.buttonOutlineText}>Sign Up</Text>
+          <Text style={styles.buttonOutlineText}>Log In with Google</Text>
         </TouchableOpacity>
+        <Text 
+        style={{textAlign: "center", fontSize: 16, marginTop: 15,}}>Don't Have an Account? <Text style={{color: "#84b840", textDecorationLine: "underline"}}
+        onPress={() => navigation.navigate("SignUp")}
+        >Sign Up Here</Text></Text>
       </View>
     </KeyboardAvoidingView>
   )
@@ -100,7 +103,8 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     marginTop: 15,
     paddingLeft: 10,
-    paddingRight: 10
+    paddingRight: 10,
+    fontSize: 16
   },
   buttonContainer: {
     width: '80%',

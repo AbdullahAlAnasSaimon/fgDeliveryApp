@@ -6,6 +6,7 @@ import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import AuthContext from "./context/AuthContext";
 import SignUpScreen from "./screens/SignUpScreen";
+import { MainLayout } from "./screens";
 
 const Stack = createNativeStackNavigator();
 
@@ -14,8 +15,9 @@ const App = () => {
     <AuthContext>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen options={{ headerShown: false }} name="LogIn" component={LoginScreen} />
-          <Stack.Screen options={{ headerShown: false }} name="SignUp" component={SignUpScreen} />
+          {/* <Stack.Screen options={{ headerShown: false }} name="LogIn" component={LoginScreen} />
+          <Stack.Screen options={{ headerShown: false }} name="SignUp" component={SignUpScreen} /> */}
+          <Stack.Screen name="Main" component={MainLayout}/>
           <Stack.Screen name="Home" component={HomeScreen} />
         </Stack.Navigator>
       </NavigationContainer>

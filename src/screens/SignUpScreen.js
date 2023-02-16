@@ -9,8 +9,7 @@ const SignUpScreen = () => {
   const navigation = useNavigation();
   const { control, handleSubmit, formState: { errors } } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const handleSignUp = (data) => {
     if(data.password === data.confirmPassword){
       userSignUp(data.email, data.password)
         .then(result => {
@@ -31,7 +30,7 @@ const SignUpScreen = () => {
       behavior="padding"
     >
       <View>
-        <Text style={{ fontSize: 20, marginBottom: 10, fontWeight: 600 }}>Please Login</Text>
+        <Text style={{ fontSize: 20, marginBottom: 10, fontWeight: 600 }}>Sign Up Here</Text>
       </View>
       <View style={styles.inputContainer}>
         <Controller
@@ -84,14 +83,14 @@ const SignUpScreen = () => {
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity
-          onPress={handleSubmit(onSubmit)}
+          onPress={handleSubmit(handleSignUp)}
           style={styles.button}
         >
           <Text style={styles.buttonText}>Sign Up</Text>
         </TouchableOpacity>
         <Text style={styles.buttonMiddleText}>OR</Text>
         <TouchableOpacity
-          onPress={() => { }}
+          onPress={() => navigation.navigate("LogIn")}
           style={[styles.button, styles.buttonOutline]}
         >
           <Text style={styles.buttonOutlineText}>Log In</Text>
