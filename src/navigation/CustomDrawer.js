@@ -4,7 +4,6 @@ import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigatio
 import { MainLayout } from '../screens';
 import { SIZES,  COLORS, FONTS, constant } from '../constants';
 import icons from '../constants/icons';
-import cross from '../assets/icons/cross.png';
 
 const Drawer = createDrawerNavigator();
 
@@ -34,11 +33,11 @@ const CustomDrawerContent = ({navigation}) =>{
             onPress={() => navigation.closeDrawer()}
           >
             <Image
-            source={cross}
+            source={icons.cross}
             style={{
               height: 35,
               width: 35,
-              tintColor: COLORS.white
+              tintColor: COLORS.primary
             }}
             />
           </TouchableOpacity>
@@ -80,9 +79,11 @@ const CustomDrawer = () => {
           )
         }}
       >
+        
         <Drawer.Screen name='MainLayout'>
           {props => <MainLayout {...props}/>}
         </Drawer.Screen>
+
       </Drawer.Navigator>
     </View>
   )

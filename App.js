@@ -16,9 +16,7 @@ const App = () => {
         >
           {/* <Stack.Screen options={{ headerShown: false }} name="LogIn" component={LoginScreen} />
           <Stack.Screen options={{ headerShown: false }} name="SignUp" component={SignUpScreen} /> */}
-          <Stack.Screen 
-          name="Home"
-          component={CustomDrawer}/>
+          <Stack.Screen name="Home" component={CustomDrawer}/>
           {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
         </Stack.Navigator>
       </NavigationContainer>
