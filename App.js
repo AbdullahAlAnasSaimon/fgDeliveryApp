@@ -4,9 +4,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { MainLayout } from "./src/screens/MainLayout";
 import CustomDrawer from "./src/navigation/CustomDrawer";
-// import { createStoreHook } from "react-redux";
+
 import { createStore, applyMiddleware } from 'redux';
-import { Provider } from "react-redux/es/exports";
+import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import rootReucer from "./src/stores/rootReucer";
 

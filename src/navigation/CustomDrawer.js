@@ -5,9 +5,10 @@ import { MainLayout } from '../screens';
 import { SIZES, COLORS, FONTS, constant } from '../constants';
 import icons from '../constants/icons';
 import logo from '../assets/logo/logo-text.png';
-import Animated from 'react-native-reanimated';
+// import Animated from 'react-native-reanimated';
 import { setSelectedTab } from '../stores/tab/tabActions';
-import { connect } from 'react-redux/es/exports';
+import { connect } from 'react-redux';
+
 
 
 const Drawer = createDrawerNavigator();
@@ -126,7 +127,7 @@ const CustomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
           <CustomDrawerItem
             label={constant.screens.home}
             icon={icons.home}
-            isFocused={selectedTab == constant.screens.home}
+            isFocused={selectedTab === constant.screens.home}
             onPress={() => {
               setSelectedTab(constant.screens.home)
               navigation.navigate("MainLayout")
@@ -140,6 +141,14 @@ const CustomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
             label={constant.screens.favourite}
             icon={icons.favourite}
           />
+          <CustomDrawerItem
+            label="Track Your Order"
+            icon={icons.location}
+          />
+          <CustomDrawerItem
+            label="Coupons"
+            icon={icons.coupon}
+          />
           {/* line divider */}
           <View
             style={{
@@ -150,16 +159,17 @@ const CustomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
             }}
           />
           <CustomDrawerItem
-            label="Track Your Order"
-            icon={icons.location}
-          />
-          <CustomDrawerItem
-            label="Coupons"
-            icon={icons.coupon}
-          />
-          <CustomDrawerItem
             label="Settings"
             icon={icons.setting}
+          />
+          {/* line divider */}
+          <View
+            style={{
+              height: 2,
+              marginVertical: SIZES.radius,
+              marginLeft: SIZES.radius,
+              backgroundColor: COLORS.lightGray1
+            }}
           />
           <CustomDrawerItem
             label="Invite a Friend"
@@ -189,19 +199,19 @@ const CustomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
 
 const CustomDrawer = ({selectedTab, setSelectedTab}) => {
 
-  const [progress, setProgress] = useState(new Animated.Value(0))
+  // const [progress, setProgress] = useState(new Animated.Value(0))
 
-  const scale = Animated.interpolateNode(progress, {
-    inputRange: [0, 1],
-    outputRange: [1, 0.8]
-  })
+  // const scale = Animated.interpolateNode(progress, {
+  //   inputRange: [0, 1],
+  //   outputRange: [1, 0.8]
+  // })
 
-  const borderRadius = Animated.interpolateNode(progress, {
-    inputRange: [0, 1],
-    outputRange: [0, 26]
-  })
+  // const borderRadius = Animated.interpolateNode(progress, {
+  //   inputRange: [0, 1],
+  //   outputRange: [0, 26]
+  // })
 
-  const animatedStyle = { borderRadius, transform: [{ scale }] }
+  // const animatedStyle = { borderRadius, transform: [{ scale }] }
 
   return (
     <View
@@ -215,7 +225,7 @@ const CustomDrawer = ({selectedTab, setSelectedTab}) => {
         overlayColor="transparent"
         drawerStyle={{
           flex: 1,
-          width: '65%',
+          width: '80%',
           paddingRight: 20,
           backgroundColor: 'transparent'
         }}
@@ -225,9 +235,9 @@ const CustomDrawer = ({selectedTab, setSelectedTab}) => {
         initialRouteName="MainLayout"
         drawerContent={props => {
 
-          setTimeout(() => {
-            setProgress(props.progress)
-          }, 0)
+          // setTimeout(() => {
+          //   setProgress(props.progress)
+          // }, 0)
 
           return (
             <CustomDrawerContent
@@ -240,8 +250,8 @@ const CustomDrawer = ({selectedTab, setSelectedTab}) => {
       >
 
         <Drawer.Screen name='MainLayout'>
-          {props => <MainLayout {...props} 
-          drawerAnimationStyle={animatedStyle}
+          {props => <MainLayout {...props}
+          // drawerAnimationStyle={animatedStyle}
           />}
         </Drawer.Screen>
 
@@ -264,5 +274,4 @@ function mapDispatchToProps(dispatch){
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)
-(CustomDrawer)
+export default connect(mapStateToProps, mapDispatchToProps)(CustomDrawer)
