@@ -1,14 +1,21 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react';
-import Animated, {useSharedValue, useAnimatedStyle, withTiming} from 'react-native-reanimated';
+import { StyleSheet, Text, View, Image } from 'react-native'
+import React, { useEffect } from 'react';
+import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 import { connect } from 'react-redux';
 import { setSelectedTab } from '../stores/tab/tabActions';
 
-import {Home } from '../screens';
-import { SIZES } from '../constants';
-import Header from '../components/Header';
+import { Home } from '../screens';
+import { COLORS, constant, SIZES } from '../constants';
+import { Header } from '../components';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import icons from '../constants/icons';
 
-const MainLayout = ({drawerAnimationStyle, navigation, selectedTab, setSelectedTab}) => {
+const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelectedTab }) => {
+
+  useEffect(() => {
+    setSelectedTab(constant.screens.home)
+  }, [])
+
   return (
     <Animated.View
       style={{
@@ -24,28 +31,55 @@ const MainLayout = ({drawerAnimationStyle, navigation, selectedTab, setSelectedT
         containerStyle={{
           height: 50,
           paddingHorizontal: SIZES.padding,
-          marginTop: 40,
+          marginTop: 10,
           alignItems: 'center'
         }}
+        title={selectedTab.toUpperCase()}
+        leftComponent={
+          <TouchableOpacity
+          style={{
+            height: 40,
+            width: 40,
+            alignItems: 'center',
+            justifyContent: 'center',
+            borderWidth: 1,
+            borderColor: COLORS.gray2,
+            borderRadius: SIZES.radius
+          }}
+          >
+            <Image 
+            source={icons.menu}
+            />
+          </TouchableOpacity>
+        }
       />
       {/* Body content */}
-      {/* Footer */}
-      <Text>Main Layout</Text>
-    </Animated.View>
+      <View
+        style={{
+          flex: 1
+        }}
+        >
+        <Text>Main Layout</Text>
+
+      </View>
+      {/* Footer */ }
+    </Animated.View >
   )
 }
 
 
-function mapStateToProps(state){
+function mapStateToProps(state) {
   return {
     selectedTab: state.tabReducer.selectedTab
   }
 }
 
-function mapDispatchToProps(dispatch){
-  return{
-    setSelectedTab: (selectedTab) => { return dispatch
-      (setSelectedTab(selectedTab))}
+function mapDispatchToProps(dispatch) {
+  return {
+    setSelectedTab: (selectedTab) => {
+      return dispatch
+        (setSelectedTab(selectedTab))
+    }
   }
 }
 
