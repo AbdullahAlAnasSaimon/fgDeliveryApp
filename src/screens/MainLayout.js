@@ -20,9 +20,7 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
     <Animated.View
       style={{
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'white',
+        backgroundColor: COLORS.white,
         ...drawerAnimationStyle
       }}
     >
@@ -46,6 +44,7 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
             borderColor: COLORS.gray2,
             borderRadius: SIZES.radius
           }}
+          onPress={() => navigation.openDrawer()}
           >
             <Image 
             source={icons.menu}
@@ -63,6 +62,31 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
 
       </View>
       {/* Footer */ }
+      <View
+      style={{
+        height: 100, 
+        justifyContent: 'center'
+      }}
+      >
+        <View
+        style={{
+          flex: 1,
+          flexDirection: 'row',
+          paddingHorizontal: SIZES.radius,
+          paddingBottom: 10,
+          borderTopLeftRadius: 20,
+          borderTopRightRadius: 20,
+          backgroundColor: COLORS.white
+        }}
+        >
+          <TabButton
+          label={constant.screens.home}
+          icon={icons.home}
+          isFocused={selectedTab == constant.screens.home}
+          onPress={() => setSelectedTab(constant.screens.home)}
+          />
+        </View>
+      </View>
     </Animated.View >
   )
 }
