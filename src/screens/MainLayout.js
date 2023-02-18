@@ -5,10 +5,51 @@ import { connect } from 'react-redux';
 import { setSelectedTab } from '../stores/tab/tabActions';
 
 import { Home } from '../screens';
-import { COLORS, constant, SIZES } from '../constants';
+import { COLORS, constant, FONTS, SIZES } from '../constants';
 import { Header } from '../components';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture-handler';
 import icons from '../constants/icons';
+
+
+const TabButton = ({label, icon, isFocused, onPress}) =>{
+  return (
+    <TouchableWithoutFeedback
+    onPress={onPress}
+    >
+      <Animated.View
+      style={{
+        flexDirection: 'row',
+        width: '80%',
+        height: 50,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 25
+      }}
+      >
+        <Image
+        source={icon}
+        style={{
+          height: 20,
+          width: 20,
+          tintColor: COLORS.gray
+        }}
+        />
+        {
+          isFocused && <Text
+          numberOfLines={1}
+          style={{
+            marginLeft: SIZES.base,
+            color: COLORS.gray,
+            ...FONTS.h3
+          }}
+          >
+            {label}
+          </Text>
+        }
+      </Animated.View>
+    </TouchableWithoutFeedback>
+  )
+}
 
 const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelectedTab }) => {
 
