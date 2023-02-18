@@ -32,8 +32,7 @@ const TabButton = ({ icon, isFocused, onPress }) => {
             height: 50,
             alignItems: 'center',
             justifyContent: 'space-evenly',
-            borderRadius: 25,
-            // backgroundColor: COLORS.primary
+            borderRadius: 25
           }}
         >
           <Image
@@ -41,7 +40,7 @@ const TabButton = ({ icon, isFocused, onPress }) => {
             style={{
               height: 25,
               width: 25,
-              tintColor: isFocused ? COLORS.primary : COLORS.gray,
+              tintColor: isFocused ? COLORS.primary : COLORS.gray
             }}
           />
         </Animated.View>
@@ -136,7 +135,7 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
             justifyContent: 'space-around',
             alignItems: 'center',
             width: "100%",
-            paddingHorizontal: SIZES.radius,
+            // paddingHorizontal: SIZES.radius,
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
             backgroundColor: COLORS.white
