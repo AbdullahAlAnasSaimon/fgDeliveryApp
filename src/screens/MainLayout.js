@@ -14,7 +14,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 
 
-const TabButton = ({ icon, isFocused, onPress }) => {
+const TabButton = ({ label, icon, isFocused, onPress }) => {
   return (
     <TouchableWithoutFeedback
       onPress={onPress}
@@ -28,7 +28,7 @@ const TabButton = ({ icon, isFocused, onPress }) => {
 
         <Animated.View
           style={{
-            flexDirection: 'row',
+            flexDirection: 'column',
             height: 50,
             alignItems: 'center',
             justifyContent: 'space-evenly',
@@ -43,6 +43,9 @@ const TabButton = ({ icon, isFocused, onPress }) => {
               tintColor: isFocused ? COLORS.primary : COLORS.gray
             }}
           />
+          {
+            isFocused && <Text>{label}</Text>
+          }
         </Animated.View>
       </Animated.View>
     </TouchableWithoutFeedback>
@@ -66,12 +69,11 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
       {/* Header */}
       <Header
         containerStyle={{
-          height: 50,
+          height: 65,
           paddingHorizontal: SIZES.padding,
-          marginTop: 10,
           alignItems: 'center'
         }}
-        title={selectedTab.toUpperCase()}
+        title={selectedTab}
         leftComponent={
           <TouchableOpacity
             style={{
@@ -135,7 +137,6 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
             justifyContent: 'space-around',
             alignItems: 'center',
             width: "100%",
-            // paddingHorizontal: SIZES.radius,
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
             backgroundColor: COLORS.white
@@ -148,28 +149,28 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
             onPress={() => setSelectedTab(constant.screens.home)}
           />
           <TabButton
-            label={constant.screens.search}
-            icon={icons.search}
-            isFocused={selectedTab == constant.screens.search}
-            onPress={() => setSelectedTab(constant.screens.search)}
+            label={constant.screens.delivery}
+            icon={icons.delivery}
+            isFocused={selectedTab == constant.screens.delivery}
+            onPress={() => setSelectedTab(constant.screens.delivery)}
           />
           <TabButton
-            label={constant.screens.cart}
-            icon={icons.cart}
-            isFocused={selectedTab == constant.screens.cart}
-            onPress={() => setSelectedTab(constant.screens.cart)}
+            label={constant.screens.map}
+            icon={icons.map}
+            isFocused={selectedTab == constant.screens.map}
+            onPress={() => setSelectedTab(constant.screens.map)}
           />
           <TabButton
-            label={constant.screens.favourite}
-            icon={icons.favourite}
-            isFocused={selectedTab == constant.screens.favourite}
-            onPress={() => setSelectedTab(constant.screens.favourite)}
+            label={constant.screens.history}
+            icon={icons.history}
+            isFocused={selectedTab == constant.screens.history}
+            onPress={() => setSelectedTab(constant.screens.history)}
           />
           <TabButton
-            label={constant.screens.notification}
-            icon={icons.notification}
-            isFocused={selectedTab == constant.screens.notification}
-            onPress={() => setSelectedTab(constant.screens.notification)}
+            label={constant.screens.wallet}
+            icon={icons.wallet}
+            isFocused={selectedTab == constant.screens.wallet}
+            onPress={() => setSelectedTab(constant.screens.wallet)}
           />
         </View>
       </View>

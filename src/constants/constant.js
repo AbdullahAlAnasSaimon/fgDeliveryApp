@@ -1,10 +1,10 @@
 const screens = {
   main_layout: "MainLayout",
   home: "Home",
-  search: "Search",
-  cart: "Cart",
-  favourite: "Favourite",
-  notification: "Notification",
+  delivery: "Delivery",
+  map: "Map",
+  history: "History",
+  wallet: "Wallet",
 }
 
 const bottom_tabs = [
@@ -14,19 +14,19 @@ const bottom_tabs = [
   },
   {
       id: 1,
-      label: screens.search,
+      label: screens.delivery,
   },
   {
       id: 2,
-      label: screens.cart,
+      label: screens.map,
   },
   {
       id: 3,
-      label: screens.favourite,
+      label: screens.history,
   },
   {
       id: 4,
-      label: screens.notification,
+      label: screens.wallet,
   },
 ]
 

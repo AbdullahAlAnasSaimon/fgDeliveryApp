@@ -134,11 +134,11 @@ const CustomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
             }}
           />
           <CustomDrawerItem
-            label={constant.screens.notification}
+            label="Notification"
             icon={icons.notification}
           />
           <CustomDrawerItem
-            label={constant.screens.favourite}
+            label="Favourite"
             icon={icons.favourite}
           />
           <CustomDrawerItem

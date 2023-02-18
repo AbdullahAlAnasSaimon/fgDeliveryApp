@@ -1,31 +1,51 @@
 import { Text, View } from 'react-native'
 import React from 'react'
-import { FONTS } from '../constants'
+import { COLORS, FONTS } from '../constants'
+import LinearGradient from 'react-native-linear-gradient'
 
-const Header = ({containerStyle, title, leftComponent}) => {
+const Header = ({ containerStyle, title, leftComponent }) => {
   return (
-    <View
-    style={{
-      flexDirection: 'row',
-      ...containerStyle
-    }}
-    >
-      {/* Left */}
-      {leftComponent}
-
-      {/* Title */}
+    <View>
       <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
+        style={{
+          flexDirection: 'row',
+          backgroundColor: COLORS.white,
+          ...containerStyle
+        }}
       >
-        <Text
-        style={{...FONTS.h2, fontWeight: 700}}
-        >{title}</Text>
+        {/* Left */}
+        {leftComponent}
+
+        {/* Title */}
+        <View
+          style={{
+            flex: 1,
+            alignItems: 'center',
+            justifyContent: 'center'
+          }}
+        >
+          <Text
+            style={{ ...FONTS.h2, fontWeight: 700 }}
+          >{title}</Text>
+        </View>
       </View>
-      {/* Right */}
+
+      <LinearGradient
+        start={{ x: 0, y: 1 }}
+        end={{ x: 0, y: 0 }}
+        colors={[
+          COLORS.transparent,
+          COLORS.gray
+        ]}
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: 80,
+          zIndex: -999
+        }}
+      />
     </View>
   )
 }

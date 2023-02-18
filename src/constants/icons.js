@@ -1,4 +1,7 @@
 // const coupon = require("../assets/icons/coupon.png")
+const map = require("../assets/icons/map.png");
+const history = require("../assets/icons/history.png");
+const delivery = require("../assets/icons/delivery.png");
 const coupon = require('../assets/icons/coupon.png');
 const cross = require("../assets/icons/cross.png")
 const cancel = require("../assets/icons/cancel.png")
@@ -29,6 +32,9 @@ const wallet = require("../assets/icons/wallet.png")
 const help = require("../assets/icons/help.png")
 
 export default {
+    delivery,
+    map,
+    history,
     coupon,
     cross,
     cancel,
