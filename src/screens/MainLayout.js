@@ -14,50 +14,36 @@ import LinearGradient from 'react-native-linear-gradient';
 
 
 
-const TabButton = ({ label, icon, isFocused, onPress }) => {
+const TabButton = ({ icon, isFocused, onPress }) => {
   return (
     <TouchableWithoutFeedback
       onPress={onPress}
     >
-      <Animated.View 
-      style={{
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center'
-      }}
+      <Animated.View
+        style={{
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
       >
+
         <Animated.View
           style={{
             flexDirection: 'row',
-            // width: '80%',
             height: 50,
             alignItems: 'center',
-            justifyContent: 'center',
+            justifyContent: 'space-evenly',
             borderRadius: 25,
-            backgroundColor: COLORS.primary
+            // backgroundColor: COLORS.primary
           }}
         >
           <Image
             source={icon}
             style={{
-              height: 20,
-              width: 20,
-              tintColor: COLORS.primary,
-              backgroundColor: COLORS.gray
+              height: 25,
+              width: 25,
+              tintColor: isFocused ? COLORS.primary : COLORS.gray,
             }}
           />
-          {
-            isFocused && <Text
-              numberOfLines={1}
-              style={{
-                marginLeft: SIZES.base,
-                color: COLORS.gray,
-                ...FONTS.h3
-              }}
-            >
-              {label}
-            </Text>
-          }
         </Animated.View>
       </Animated.View>
     </TouchableWithoutFeedback>
@@ -106,6 +92,7 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
           </TouchableOpacity>
         }
       />
+
       {/* Body content */}
       <View
         style={{
@@ -113,13 +100,14 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
         }}
       >
         <Text>Main Layout</Text>
-
       </View>
+
       {/* Footer */}
       <View
         style={{
           height: 80,
-          justifyContent: 'center'
+          justifyContent: 'flex-end',
+          alignItems: 'center'
         }}
       >
         <LinearGradient
@@ -134,17 +122,21 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
             top: -20,
             left: 0,
             right: 0,
-            height: 100,
+            height: 80,
             borderTopLeftRadius: 15,
             borderTopRightRadius: 15
           }}
         />
+
+        {/* Tabs */}
         <View
           style={{
             flex: 1,
             flexDirection: 'row',
+            justifyContent: 'space-around',
+            alignItems: 'center',
+            width: "100%",
             paddingHorizontal: SIZES.radius,
-            paddingBottom: 10,
             borderTopLeftRadius: 20,
             borderTopRightRadius: 20,
             backgroundColor: COLORS.white
