@@ -1,6 +1,6 @@
 import { Alert, Button, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
 import React, { useContext, useState } from 'react';
-import { StateContext } from '../context/AuthContext';
+import { StateContext } from '../../context/AuthContext';
 import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from 'react-hook-form';
 
