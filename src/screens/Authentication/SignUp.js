@@ -1,11 +1,15 @@
-import { Text, View } from 'react-native'
-import React from 'react'
+import { Text, View, Image, TouchableOpacity } from 'react-native'
+import React, { useState } from 'react'
+import { SIZES, FONTS, COLORS } from '../../constants'
+import { FormInput } from '../../components'
+import AuthLayout from './AuthLayout'
 
 const SignUp = () => {
+  
   return (
-    <View>
-      <Text>SignUp</Text>
-    </View>
+    <AuthLayout>
+      
+    </AuthLayout>
   )
 }
 

@@ -24,7 +24,7 @@ const FormInput = ({containerStyle, label, placeholder, inputStyle, prependCompo
         paddingHorizontal: SIZES.padding,
         marginTop: SIZES.base,
         borderRadius: SIZES.radius,
-        backgroundColor: COLORS.darkGray2
+        backgroundColor: COLORS.lightGray2
       }}
       >
         {prependComponent}
@@ -37,7 +37,13 @@ const FormInput = ({containerStyle, label, placeholder, inputStyle, prependCompo
         placeholder={placeholder}
         placeholderTextColor={COLORS.gray}
         secureTextEntry={secureTextEntry}
+        keyboardType={keyboardType}
+        autoComplete={autoComplete}
+        autoCapitalize={autoCapitalize}
+        onChange={text => onChange(text)}
         />
+
+        {appendComponent}
       </View>
     </View>
   )
