@@ -9,6 +9,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import rootReucer from "./src/stores/rootReucer";
+import { LogIn } from "./src/screens";
 
 
 const Stack = createStackNavigator();
@@ -25,9 +26,10 @@ const App = () => {
           screenOptions={{ headerShown: false }}
           initialRouteName={'Home'}
         >
+          <Stack.Screen name="LogIn" component={LogIn} />
           {/* <Stack.Screen options={{ headerShown: false }} name="LogIn" component={LoginScreen} />
           <Stack.Screen options={{ headerShown: false }} name="SignUp" component={SignUpScreen} /> */}
-          <Stack.Screen name="Home" component={CustomDrawer} />
+          {/* <Stack.Screen name="Home" component={CustomDrawer} /> */}
           {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
         </Stack.Navigator>
       </NavigationContainer>
