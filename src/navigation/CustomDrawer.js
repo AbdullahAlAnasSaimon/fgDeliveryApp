@@ -5,7 +5,6 @@ import { MainLayout } from '../screens';
 import { SIZES, COLORS, FONTS, constant } from '../constants';
 import icons from '../constants/icons';
 import logo from '../assets/logo/logo-text.png';
-// import Animated from 'react-native-reanimated';
 import { setSelectedTab } from '../stores/tab/tabActions';
 import { connect } from 'react-redux';
 

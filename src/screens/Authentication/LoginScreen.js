@@ -5,9 +5,9 @@ import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from 'react-hook-form';
 
 const LoginScreen = () => {
-  const { userLogin } = useContext(StateContext);
   const navigation = useNavigation();
   const { control, handleSubmit, formState: { errors } } = useForm();
+  const { userLogin } = useContext(StateContext);
 
   const handleLogIn = (data) => {
     userLogin(data.email, data.password)

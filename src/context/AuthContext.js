@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+// import { StyleSheet, Text, View } from 'react-native'
 import React, { createContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth';
 import app from '../../firebase';
@@ -30,8 +30,8 @@ const AuthContext = ({ children }) => {
   const info = {
     user,
     userLogin,
-    userSignUp
-
+    userSignUp,
+    loading
   }
   return (
     <StateContext.Provider value={info}>
@@ -42,4 +42,4 @@ const AuthContext = ({ children }) => {
 
 export default AuthContext;
 
-const styles = StyleSheet.create({})
+// const styles = StyleSheet.create({})

@@ -1,10 +1,11 @@
 import { Text, View, Image, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import AuthLayout from './AuthLayout';
 import { SIZES, FONTS, COLORS } from '../../constants';
 import { CustomSwitch, FormInput, TextButton, TextIconButton } from '../../components';
 import icons from '../../constants/icons';
 import { utils } from '../../utils';
+import { StateContext } from '../../context/AuthContext';
 
 
 const LogIn = ({ navigation }) => {
@@ -13,10 +14,25 @@ const LogIn = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [saveMe, setSaveMe] = useState(false);
   const [showPass, setShowPass] = useState(false);
+  
+  const {userLogin} = useContext(StateContext);
+
+  const handleLogIn = () => {
+    userLogin(email, password)
+      .then(result => {
+        const user = result.user;
+        console.log(user.email);
+        if (user) {
+          navigation.navigate("Home");
+        }
+      }).catch(err => Alert(err.message))
+  }
 
   const isEnableLogIn = () => {
     return email != "" && password != ""
   }
+
+
 
   return (
     <AuthLayout
@@ -110,6 +126,7 @@ const LogIn = ({ navigation }) => {
         </View>
         <TextButton
           label="Log In"
+          onPress={handleLogIn}
           disabled={isEnableLogIn() ? false : true}
           buttonContainerStyle={{
             height: 55,
@@ -119,6 +136,7 @@ const LogIn = ({ navigation }) => {
             backgroundColor: isEnableLogIn() ? COLORS.primary : COLORS.transparentPrimray
           }}
         />
+        
 
         <View
           style={{
@@ -148,14 +166,19 @@ const LogIn = ({ navigation }) => {
             onPress={() => navigation.navigate("SignUp")}
           />
         </View>
-      </View>
 
-      <View>
+        <Text
+        style={{
+          textAlign: 'center',
+          marginTop: SIZES.radius
+        }}
+        >OR</Text>
         <TextIconButton
           containerStyle={{
             height: 50,
             alignItems: 'center',
             borderRadius: SIZES.radius,
+            marginTop: SIZES.radius,
             backgroundColor: COLORS.lightGray2
           }}
           icon={icons.google}
