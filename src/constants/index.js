@@ -8,4 +8,5 @@ export {
     COLORS,
     SIZES,
     FONTS,
+    icons
 }
