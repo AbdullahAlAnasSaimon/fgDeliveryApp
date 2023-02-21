@@ -15,6 +15,10 @@ const SignUp = ({ navigation }) => {
   const [numberError, setNumberError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
+  const isEnableSignUp = () => {
+    return email != "" && phoneNumber != "" && password != ""
+  }
+
   return (
     <AuthLayout
       title="Getting Started"
@@ -115,7 +119,45 @@ const SignUp = ({ navigation }) => {
             </TouchableOpacity>
           }
         />
-
+        <TextButton
+          label="Sign Up"
+          disabled={isEnableSignUp() ? false : true}
+          buttonContainerStyle={{
+            height: 55,
+            alignItems: 'center',
+            marginTop: SIZES.padding,
+            borderRadius: SIZES.radius,
+            backgroundColor: isEnableSignUp() ? COLORS.primary : COLORS.transparentPrimray
+          }}
+        />
+        <View
+          style={{
+            flexDirection: 'row',
+            marginTop: SIZES.radius,
+            justifyContent: 'center'
+          }}
+        >
+          <Text
+            style={{
+              color: COLORS.darkGray,
+              ...FONTS.body3
+            }}
+          >
+            Already have an account?
+          </Text>
+          <TextButton
+            label="Log In"
+            buttonContainerStyle={{
+              backgroundColor: null,
+              marginLeft: 3
+            }}
+            labelStyle={{
+              color: COLORS.primary,
+              ...FONTS.h3
+            }}
+            onPress={() => navigation.navigate("LogIn")}
+          />
+        </View>
       </View>
     </AuthLayout>
   )

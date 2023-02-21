@@ -7,14 +7,14 @@ import icons from '../../constants/icons';
 import { utils } from '../../utils';
 
 
-const LogIn = ({navigation}) => {
+const LogIn = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
   const [saveMe, setSaveMe] = useState(false);
   const [showPass, setShowPass] = useState(false);
 
-  const isEnableLogIn = () =>{
+  const isEnableLogIn = () => {
     return email != "" && password != ""
   }
 
@@ -87,87 +87,87 @@ const LogIn = ({navigation}) => {
         />
 
         <View
-        style={{
-          flexDirection: 'row',
-          marginTop: SIZES.radius,
-          justifyContent: 'space-between'
-        }}
+          style={{
+            flexDirection: 'row',
+            marginTop: SIZES.radius,
+            justifyContent: 'space-between'
+          }}
         >
           <CustomSwitch
-          value={saveMe}
-          onChange={(value) => setSaveMe(value)}
+            value={saveMe}
+            onChange={(value) => setSaveMe(value)}
           />
 
-        <Text
-        style={{
-          color: COLORS.gray,
-          ...FONTS.body4
-        }}
-        onPress={() => navigation.navigate("ForgotPassword")}
-        >
-          Forgot Password
-        </Text>
+          <Text
+            style={{
+              color: COLORS.gray,
+              ...FONTS.body4
+            }}
+            onPress={() => navigation.navigate("ForgotPassword")}
+          >
+            Forgot Password
+          </Text>
         </View>
         <TextButton
-        label="Log In"
-        disabled={isEnableLogIn() ? false : true}
-        buttonContainerStyle={{
-          height: 55,
-          alignItems: 'center',
-          marginTop: SIZES.padding,
-          borderRadius: SIZES.radius,
-          backgroundColor: isEnableLogIn() ? COLORS.primary : COLORS.transparentPrimray
-        }}
+          label="Log In"
+          disabled={isEnableLogIn() ? false : true}
+          buttonContainerStyle={{
+            height: 55,
+            alignItems: 'center',
+            marginTop: SIZES.padding,
+            borderRadius: SIZES.radius,
+            backgroundColor: isEnableLogIn() ? COLORS.primary : COLORS.transparentPrimray
+          }}
         />
 
         <View
-        style={{
-          flexDirection: 'row',
-          marginTop: SIZES.radius,
-          justifyContent: 'center'
-        }}
+          style={{
+            flexDirection: 'row',
+            marginTop: SIZES.radius,
+            justifyContent: 'center'
+          }}
         >
           <Text
-          style={{
-            color: COLORS.darkGray,
-            ...FONTS.body3
-          }}
+            style={{
+              color: COLORS.darkGray,
+              ...FONTS.body3
+            }}
           >
             Don't have an account?
           </Text>
           <TextButton
-          label="Sign Up"
-          buttonContainerStyle={{
-            backgroundColor: null,
-            marginLeft: 3
-          }}
-          labelStyle={{
-            color: COLORS.primary,
-            ...FONTS.h3
-          }}
-          onPress={() => navigation.navigate("SignUp")}
+            label="Sign Up"
+            buttonContainerStyle={{
+              backgroundColor: null,
+              marginLeft: 3
+            }}
+            labelStyle={{
+              color: COLORS.primary,
+              ...FONTS.h3
+            }}
+            onPress={() => navigation.navigate("SignUp")}
           />
         </View>
       </View>
 
       <View>
         <TextIconButton
-        containerStyle={{
-          height: 50,
-          alignItems: 'center',
-          borderRadius: SIZES.radius,
-          backgroundColor: COLORS.lightGray2
-        }}
-        icon={icons.google}
-        iconPosition="LEFT"
-        iconStyle={{
-          tintColor: null
-        }}
-        label="Continue With Google"
-        labelStyle={{
-          marginLeft: SIZES.radius
-        }}
-        onPress={() => console.log('google')}
+          containerStyle={{
+            height: 50,
+            alignItems: 'center',
+            borderRadius: SIZES.radius,
+            backgroundColor: COLORS.lightGray2
+          }}
+          icon={icons.google}
+          iconPosition="LEFT"
+          iconStyle={{
+            tintColor: null
+          }}
+          label="Continue With Google"
+          labelStyle={{
+            marginLeft: SIZES.radius
+          }}
+          onPress={() => console.log('google')}
         />
       </View>
     </AuthLayout>
