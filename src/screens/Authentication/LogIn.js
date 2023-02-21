@@ -2,9 +2,10 @@ import { Text, View, Image, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import AuthLayout from './AuthLayout';
 import { SIZES, FONTS, COLORS } from '../../constants';
-import { CustomSwitch, FormInput, TextButton } from '../../components';
+import { CustomSwitch, FormInput, TextButton, TextIconButton } from '../../components';
 import icons from '../../constants/icons';
 import { utils } from '../../utils';
+// import TextIconButton from '../../components';
 
 
 const LogIn = ({navigation}) => {
@@ -148,6 +149,27 @@ const LogIn = ({navigation}) => {
           onPress={() => navigation.navigate("SignUp")}
           />
         </View>
+      </View>
+
+      <View>
+        <TextIconButton
+        containerStyle={{
+          height: 50,
+          alignItems: 'center',
+          borderRadius: SIZES.radius,
+          backgroundColor: COLORS.lightGray2
+        }}
+        icon={icons.google}
+        iconPosition="LEFT"
+        iconStyle={{
+          tintColor: null
+        }}
+        label="Continue With Google"
+        labelStyle={{
+          marginLeft: SIZES.radius
+        }}
+        onPress={() => console.log('google')}
+        />
       </View>
     </AuthLayout>
   )
