@@ -9,7 +9,7 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import rootReucer from "./src/stores/rootReucer";
-import { LogIn } from "./src/screens";
+import { LogIn, SignUp } from "./src/screens";
 import ForgotPassword from "./src/screens/Authentication/ForgotPassword";
 
 
@@ -28,6 +28,7 @@ const App = () => {
           initialRouteName={'Home'}
         >
           <Stack.Screen name="LogIn" component={LogIn} />
+          <Stack.Screen name="SignUp" component={SignUp} />
           <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
           {/* <Stack.Screen options={{ headerShown: false }} name="LogIn" component={LoginScreen} />
           <Stack.Screen options={{ headerShown: false }} name="SignUp" component={SignUpScreen} /> */}
