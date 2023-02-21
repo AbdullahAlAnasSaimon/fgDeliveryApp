@@ -5,7 +5,6 @@ import { SIZES, FONTS, COLORS } from '../../constants';
 import { CustomSwitch, FormInput, TextButton, TextIconButton } from '../../components';
 import icons from '../../constants/icons';
 import { utils } from '../../utils';
-// import TextIconButton from '../../components';
 
 
 const LogIn = ({navigation}) => {
