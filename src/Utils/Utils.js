@@ -1,9 +1,9 @@
+function isValidEmail(value) {
+  const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(value).toLowerCase());
+}
 
 function validateEmail(value, setEmailError) {
-  function isValidEmail(value) {
-    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(String(value).toLowerCase());
-  }
   const validValue = isValidEmail(value)
   if (validValue) {
     setEmailError("");
@@ -24,10 +24,23 @@ function validatePassword(value, setPasswordError) {
   }
 }
 
+function validateContactNumber(value, setNumberError){
+  const sliced = value.slice(0, 1);
+  if(sliced != "01" && value.length != 11){
+    setNumberError("Start with 01 & 11 characters")
+  }
+  else if(value == ""){
+    setNumberError("Invalid Contact")
+  }else{
+    setNumberError("")
+  }
+}
+
 const utils = {
-  // isValidEmail,
+  isValidEmail,
   validateEmail,
-  validatePassword
+  validatePassword,
+  validateContactNumber
 };
 
 export default utils;

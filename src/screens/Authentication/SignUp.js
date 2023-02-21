@@ -7,11 +7,12 @@ import { utils } from '../../utils'
 
 const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("+880");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const [password, setPassword] = useState("");
   const [showPass, setShowPass] = useState(false);
 
   const [emailError, setEmailError] = useState("");
+  const [numberError, setNumberError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
   return (
@@ -53,6 +54,68 @@ const SignUp = ({ navigation }) => {
             </View>
           }
         />
+
+        <FormInput
+          label="Contact Number"
+          containerStyle={{
+            marginTop: SIZES.radius
+          }}
+          onChange={(value) => {
+            utils.validateContactNumber(value, setNumberError)
+            setPhoneNumber(value)
+          }}
+          errorMsg={numberError}
+          appendComponent={
+            <View
+              style={{
+                justifyContent: 'center'
+              }}
+            >
+              <Image
+                source={phoneNumber == "" || (phoneNumber != "" && numberError == "") ? icons.correct : icons.cancel}
+                style={{
+                  height: 20,
+                  width: 20,
+                  tintColor: phoneNumber == "" ? COLORS.gray : (phoneNumber != "" && numberError == "") ? COLORS.green : COLORS.red
+                }}
+              />
+            </View>
+          }
+        />
+
+        <FormInput
+          label={"Password"}
+          secureTextEntry={!showPass}
+          autoComplete="password"
+          containerStyle={{
+            marginTop: SIZES.radius
+          }}
+          onChange={(value) => {
+            utils.validatePassword(value, setPasswordError)
+            setPassword(value)
+          }}
+          errorMsg={passwordError}
+          appendComponent={
+            <TouchableOpacity
+              style={{
+                width: 40,
+                alignItems: 'flex-end',
+                justifyContent: 'center'
+              }}
+              onPress={() => setShowPass(!showPass)}
+            >
+              <Image
+                source={showPass ? icons.eye_close : icons.eye}
+                style={{
+                  width: 20,
+                  height: 20,
+                  tintColor: COLORS.gray
+                }}
+              />
+            </TouchableOpacity>
+          }
+        />
+
       </View>
     </AuthLayout>
   )
