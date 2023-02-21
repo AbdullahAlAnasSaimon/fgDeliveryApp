@@ -2,7 +2,7 @@ import { Text, View, Image, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import AuthLayout from './AuthLayout';
 import { SIZES, FONTS, COLORS } from '../../constants';
-import { FormInput } from '../../components';
+import { CustomSwitch, FormInput } from '../../components';
 import icons from '../../constants/icons';
 import { utils } from '../../utils';
 
@@ -11,7 +11,7 @@ const LogIn = () => {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
-
+  const [saveMe, setSaveMe] = useState(false);
   const [showPass, setShowPass] = useState(false);
 
   return (
@@ -29,7 +29,7 @@ const LogIn = () => {
           keyboardType='email-address'
           autoComplete='email'
           onChange={(value) => {
-            utils.validateEmail(value, setEmailError)
+            utils.validateEmail(value, setEmailError);
             setEmail(value)
           }}
           errorMsg={emailError}
@@ -58,7 +58,9 @@ const LogIn = () => {
           containerStyle={{
             marginTop: SIZES.radius
           }}
-          onChange={(value) => setPassword(value)}
+          onChange={(value) => {
+            setPassword(value)
+          }}
           appendComponent={
             <TouchableOpacity
               style={{
@@ -79,6 +81,19 @@ const LogIn = () => {
             </TouchableOpacity>
           }
         />
+
+        <View
+        style={{
+          flexDirection: 'row',
+          marginTop: SIZES.radius,
+          justifyContent: 'space-between'
+        }}
+        >
+          <CustomSwitch
+          value={saveMe}
+          onChange={(value) => setSaveMe(value)}
+          />
+        </View>
 
       </View>
     </AuthLayout>

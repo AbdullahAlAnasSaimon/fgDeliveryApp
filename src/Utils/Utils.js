@@ -9,9 +9,9 @@ function validateEmail(value, setEmailError) {
   }
   else if (isValidEmail(value)) {
       setEmailError("")
-  }
-  else {
-      setEmailError("Invalid Email")
+    }
+    else {
+    setEmailError("Invalid Email");
   }
 }
 
