@@ -2,6 +2,7 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import app from '../../firebase';
+import { useQuery } from 'react-query';
 
 const auth = getAuth(app);
 export const StateContext = createContext();
@@ -31,12 +32,23 @@ const AuthContext = ({ children }) => {
     return () => unsubscribe();
   }, [])
 
+  // delivery history data fetching
+  const {data: deliveriedHistory, isLoading, refetch} = useQuery({
+    queryKey: ["deliveryHistory"],
+    queryFn: async () =>{
+      const res = await fetch(`https://fg-server.vercel.app/delivered-orders?email=${user?.email}`);
+      const data = await res.json();
+      return data;
+    }
+  })
+
   const info = {
     user,
     userLogin,
     userSignUp,
     logOut,
-    loading
+    loading,
+    deliveriedHistory
   }
   return (
     <StateContext.Provider value={info}>

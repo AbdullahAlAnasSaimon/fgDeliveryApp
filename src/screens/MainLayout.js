@@ -11,6 +11,7 @@ import { TouchableOpacity, TouchableWithoutFeedback } from 'react-native-gesture
 import icons from '../constants/icons';
 
 import LinearGradient from 'react-native-linear-gradient';
+import History from './History';
 
 
 
@@ -100,7 +101,12 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
           flex: 1
         }}
       >
-        <Text>Main Layout</Text>
+        {
+          selectedTab == "Home" && <Text>Main Layout</Text>
+        }
+        {
+          selectedTab == "History" && <History/>
+        }
       </View>
 
       {/* Footer */}
@@ -164,7 +170,10 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
             label={constant.screens.history}
             icon={icons.history}
             isFocused={selectedTab == constant.screens.history}
-            onPress={() => setSelectedTab(constant.screens.history)}
+            onPress={() => {
+              setSelectedTab(constant.screens.history)
+              // navigation.navigate("History");
+            }}
           />
           <TabButton
             label={constant.screens.wallet}
