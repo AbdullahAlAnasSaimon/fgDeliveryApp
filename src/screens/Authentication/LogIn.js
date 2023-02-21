@@ -7,7 +7,7 @@ import icons from '../../constants/icons';
 import { utils } from '../../utils';
 
 
-const LogIn = () => {
+const LogIn = ({navigation}) => {
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
   const [password, setPassword] = useState("");
@@ -93,6 +93,17 @@ const LogIn = () => {
           value={saveMe}
           onChange={(value) => setSaveMe(value)}
           />
+
+        <Text
+        style={{
+          color: COLORS.gray,
+          ...FONTS.body4
+        }}
+        onPress={() => navigation.navigate("ForgotPassword")}
+        >
+          Forgot Password
+        </Text>
+
         </View>
 
       </View>
