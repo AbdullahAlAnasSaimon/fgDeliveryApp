@@ -40,7 +40,7 @@ const FormInput = ({containerStyle, label, placeholder, inputStyle, prependCompo
         keyboardType={keyboardType}
         autoComplete={autoComplete}
         autoCapitalize={autoCapitalize}
-        onChange={text => onChange(text)}
+        onChangeText={text => onChange(text)}
         />
 
         {appendComponent}

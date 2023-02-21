@@ -14,6 +14,10 @@ const LogIn = ({navigation}) => {
   const [saveMe, setSaveMe] = useState(false);
   const [showPass, setShowPass] = useState(false);
 
+  const isEnableLogIn = () =>{
+    return email != "" && password != ""
+  }
+
   return (
     <AuthLayout
       title={"Please Log In"}
@@ -106,12 +110,13 @@ const LogIn = ({navigation}) => {
         </View>
         <TextButton
         label="Log In"
+        disabled={isEnableLogIn() ? false : true}
         buttonContainerStyle={{
           height: 55,
           alignItems: 'center',
           marginTop: SIZES.padding,
           borderRadius: SIZES.radius,
-          backgroundColor: COLORS.primary
+          backgroundColor: isEnableLogIn() ? COLORS.primary : COLORS.transparentPrimray
         }}
         />
       </View>
