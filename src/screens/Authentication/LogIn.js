@@ -2,7 +2,7 @@ import { Text, View, Image, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
 import AuthLayout from './AuthLayout';
 import { SIZES, FONTS, COLORS } from '../../constants';
-import { CustomSwitch, FormInput } from '../../components';
+import { CustomSwitch, FormInput, TextButton } from '../../components';
 import icons from '../../constants/icons';
 import { utils } from '../../utils';
 
@@ -103,9 +103,17 @@ const LogIn = ({navigation}) => {
         >
           Forgot Password
         </Text>
-
         </View>
-
+        <TextButton
+        label="Log In"
+        buttonContainerStyle={{
+          height: 55,
+          alignItems: 'center',
+          marginTop: SIZES.padding,
+          borderRadius: SIZES.radius,
+          backgroundColor: COLORS.primary
+        }}
+        />
       </View>
     </AuthLayout>
   )
