@@ -14,7 +14,8 @@ const LogIn = ({ navigation }) => {
   const [password, setPassword] = useState("");
   const [saveMe, setSaveMe] = useState(false);
   const [showPass, setShowPass] = useState(false);
-  
+  const [firebaseError, setFirebaseError] = useState('');
+
   const {userLogin} = useContext(StateContext);
 
   const handleLogIn = () => {
@@ -25,7 +26,7 @@ const LogIn = ({ navigation }) => {
         if (user) {
           navigation.navigate("Home");
         }
-      }).catch(err => Alert(err.message))
+      }).catch(err => setFirebaseError(err.message))
   }
 
   const isEnableLogIn = () => {
@@ -39,6 +40,12 @@ const LogIn = ({ navigation }) => {
       title={"Please Log In"}
       subtitle="Welcome back, You have been missed"
     >
+      <Text
+      style={{
+        textAlign: 'center',
+        color: COLORS.red
+      }}
+      >{firebaseError}</Text>
       <View
         style={{
           flex: 1,
@@ -166,32 +173,6 @@ const LogIn = ({ navigation }) => {
             onPress={() => navigation.navigate("SignUp")}
           />
         </View>
-
-        <Text
-        style={{
-          textAlign: 'center',
-          marginTop: SIZES.radius
-        }}
-        >OR</Text>
-        <TextIconButton
-          containerStyle={{
-            height: 50,
-            alignItems: 'center',
-            borderRadius: SIZES.radius,
-            marginTop: SIZES.radius,
-            backgroundColor: COLORS.lightGray2
-          }}
-          icon={icons.google}
-          iconPosition="LEFT"
-          iconStyle={{
-            tintColor: null
-          }}
-          label="Continue With Google"
-          labelStyle={{
-            marginLeft: SIZES.radius
-          }}
-          onPress={() => console.log('google')}
-        />
       </View>
     </AuthLayout>
   )

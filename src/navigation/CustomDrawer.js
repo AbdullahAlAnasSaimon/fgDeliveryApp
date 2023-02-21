@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { createDrawerNavigator, DrawerContentScrollView } from '@react-navigation/drawer';
 import { MainLayout } from '../screens';
@@ -7,6 +7,7 @@ import icons from '../constants/icons';
 import logo from '../assets/logo/logo-text.png';
 import { setSelectedTab } from '../stores/tab/tabActions';
 import { connect } from 'react-redux';
+import { StateContext } from '../context/AuthContext';
 
 
 
@@ -46,6 +47,17 @@ const CustomDrawerItem = ({ label, icon, isFocused, onPress }) => {
 }
 
 const CustomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
+  const {logOut, user} = useContext(StateContext)
+
+  const handleLogOut = () =>{
+    logOut()
+    .then(() => {})
+    .then(() => {
+      navigation.navigate("LogIn");
+    })
+
+  }
+
   return (
     <DrawerContentScrollView
       scrollEnabled={true}
@@ -90,7 +102,7 @@ const CustomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
           onPress={() => console.log("profile")}
         >
           <Image
-            source={logo}
+            source={user?.profileURL ? user?.profileURL : logo}
             style={{
               width: 50,
               height: 50,
@@ -106,7 +118,7 @@ const CustomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
                 color: COLORS.white,
                 ...FONTS.h3
               }}
-            >Abdullah Al Anas Saimon</Text>
+            >{user?.displayName}</Text>
             <Text
               style={{
                 color: COLORS.white,
@@ -187,6 +199,7 @@ const CustomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
         >
           <CustomDrawerItem
             label="Log Out"
+            onPress={handleLogOut}
             icon={icons.logout}
           />
         </View>

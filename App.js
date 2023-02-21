@@ -27,14 +27,12 @@ const App = () => {
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{ headerShown: false }}
-            // initialRouteName={'Home'}
+            initialRouteName={'Home'}
           >
             <Stack.Screen name="LogIn" component={LogIn} />
             <Stack.Screen name="SignUp" component={SignUp} />
             <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
             <Stack.Screen name="Home" component={CustomDrawer} />
-            {/* <Stack.Screen options={{ headerShown: false }} name="LogIn" component={LoginScreen} />
-          <Stack.Screen options={{ headerShown: false }} name="SignUp" component={SignUpScreen} /> */}
             {/* <Stack.Screen name="HomeScreen" component={MainLayout} /> */}
           </Stack.Navigator>
         </NavigationContainer>
