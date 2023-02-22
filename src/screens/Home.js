@@ -5,6 +5,7 @@ import { useDeliveryOrders } from '../hooks/useDeliveryOrders';
 import { ScrollView } from 'react-native-gesture-handler';
 import { COLORS, SIZES } from '../constants';
 import { TextButton } from '../components';
+import Loader from '../components/Loader';
 
 const Home = () => {
   const { user } = useContext(StateContext);
@@ -12,7 +13,7 @@ const Home = () => {
   const filteredOrders = deliveryOrders?.data?.filter(order => !order?.deliver && !order?.pick)
 
   if(orderLoading){
-    return <View style={{flex: 1, justifyContent:'center', alignItems: 'center'}}><Text>Loading...</Text></View>
+    return <Loader/>
   }
 
   orderRefetch();

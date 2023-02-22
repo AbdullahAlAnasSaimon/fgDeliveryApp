@@ -116,7 +116,8 @@ const CustomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
             <Text
               style={{
                 color: COLORS.white,
-                ...FONTS.h3
+                ...FONTS.h3,
+                fontWeight: 700
               }}
             >{user?.displayName}</Text>
             <Text

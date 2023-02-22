@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ActivityIndicator, StyleSheet, Text, View } from 'react-native'
 import React, { useContext, useState, useEffect } from 'react'
 import { StateContext } from '../context/AuthContext'
 import { useDeliveryHistory } from '../hooks/useDeliveryHistory'
@@ -6,6 +6,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { COLORS, SIZES } from '../constants'
 import { TextButton } from '../components'
 import { useDateTime } from '../hooks/useDateTime'
+import Loader from '../components/Loader'
 
 const History = () => {
   const { user } = useContext(StateContext)
@@ -13,7 +14,7 @@ const History = () => {
 
 
   if (deliveredLoading) {
-    return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text>Loading...</Text></View>
+    return <Loader/>
   }
 
   deliveryRefetch();
@@ -46,12 +47,12 @@ const History = () => {
 const Card = ({ item }) => {
   const [formattedDate] = useDateTime(new Date(item?.deliveryTime));
 
-
   return (
     <View style={styles.card}>
       <Text>{formattedDate}</Text>
       <Text style={{ fontWeight: 700 }}>{item?._id}</Text>
       <Text>Total Price: {item?.total_price}৳</Text>
+      {item?.paid && item?.condition === "Cash On Delivery" && <Text style={{color: COLORS.primary}}>Cash Collected</Text>}
       <Text
         style={{
           textAlign: 'center',
