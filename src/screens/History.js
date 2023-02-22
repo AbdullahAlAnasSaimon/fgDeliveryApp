@@ -13,6 +13,9 @@ const History = () => {
   if(deliveredLoading){
     return <View style={{flex: 1, justifyContent:'center', alignItems: 'center'}}><Text>Loading...</Text></View>
   }
+
+  deliveryRefetch();
+
   return (
     <View
       style={{
@@ -56,10 +59,10 @@ const Card = ({ item }) => {
       label="View Details"
       buttonContainerStyle={{
         marginTop: 10,
-        borderRadius: SIZES.radius
+        borderRadius: 5
       }}
       labelStyle={{
-        padding: 5,
+        padding: 8,
       }}
       />
     </View>

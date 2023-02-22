@@ -87,7 +87,7 @@ const CustomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
               style={{
                 height: 35,
                 width: 35,
-                tintColor: COLORS.primary
+                tintColor: COLORS.white
               }}
             />
           </TouchableOpacity>
@@ -101,14 +101,14 @@ const CustomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
           }}
           onPress={() => console.log("profile")}
         >
-          <Image
+          {/* <Image
             source={user?.profileURL ? user?.profileURL : logo}
             style={{
               width: 50,
               height: 50,
               borderRadius: SIZES.radius
             }}
-          />
+          /> */}
           <View
             style={{
               marginLeft: SIZES.radius
@@ -176,7 +176,7 @@ const CustomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
           {/* line divider */}
           <View
             style={{
-              height: 2,
+              height: 1,
               marginVertical: SIZES.radius,
               marginLeft: SIZES.radius,
               backgroundColor: COLORS.lightGray1

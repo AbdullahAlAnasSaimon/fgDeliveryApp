@@ -31,8 +31,7 @@ const App = () => {
           <NavigationContainer>
             <Stack.Navigator
               screenOptions={{ headerShown: false }}
-              initialRouteName={'Home'}
-            >
+              initialRouteName={'Home'}>
               <Stack.Screen name="LogIn" component={LogIn} />
               <Stack.Screen name="SignUp" component={SignUp} />
               <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
@@ -49,11 +48,3 @@ const App = () => {
 
 export default App;
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center'
-//   },
-// })
