@@ -9,10 +9,9 @@ import { TextButton } from '../components'
 const History = () => {
   const { user } = useContext(StateContext)
   const [deliveriedHistory, deliveredLoading, deliveryRefetch] = useDeliveryHistory(user?.email);
-  console.log(deliveriedHistory.length);
 
   if(deliveredLoading){
-    return <Text style={{flex: 1, justifyContent:'center', alignItems: 'center'}}>Loading...</Text>
+    return <View style={{flex: 1, justifyContent:'center', alignItems: 'center'}}><Text>Loading...</Text></View>
   }
   return (
     <View
@@ -43,7 +42,7 @@ const Card = ({ item }) => {
   return (
     <View style={styles.card}>
       <Text>{item?.deliveryTime}</Text>
-      <Text>{item?._id}</Text>
+      <Text style={{fontWeight: 700}}>{item?._id}</Text>
       <Text>Total Price: {item?.total_price}৳</Text>
       <Text
       style={{

@@ -32,15 +32,7 @@ const AuthContext = ({ children }) => {
     return () => unsubscribe();
   }, [])
 
-  // delivery history data fetching
-  const {data: deliveriedHistory, isLoading, refetch} = useQuery({
-    queryKey: ["deliveryHistory"],
-    queryFn: async () =>{
-      const res = await fetch(`https://fg-server.vercel.app/delivered-orders?email=${user?.email}`);
-      const data = await res.json();
-      return data;
-    }
-  })
+  
 
   const info = {
     user,
@@ -48,7 +40,6 @@ const AuthContext = ({ children }) => {
     userSignUp,
     logOut,
     loading,
-    deliveriedHistory
   }
   return (
     <StateContext.Provider value={info}>
