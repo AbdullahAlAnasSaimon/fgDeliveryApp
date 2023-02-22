@@ -25,7 +25,7 @@ const History = () => {
         marginTop: 10,
         fontSize: 17,
         fontWeight: 700
-      }}>Delivery History: {deliveriedHistory.length}</Text>
+      }}>Delivery History: {deliveriedHistory?.length}</Text>
       <ScrollView>
         {
           deliveriedHistory?.map(item => <Card

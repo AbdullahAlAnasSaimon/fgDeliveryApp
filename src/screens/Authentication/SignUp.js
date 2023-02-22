@@ -1,9 +1,10 @@
 import { Text, View, Image, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { SIZES, FONTS, COLORS, icons } from '../../constants'
 import AuthLayout from './AuthLayout'
 import { FormInput, TextButton, TextIconButton } from '../../components'
 import { utils } from '../../utils'
+import { StateContext } from '../../context/AuthContext'
 
 const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -14,6 +15,19 @@ const SignUp = ({ navigation }) => {
   const [emailError, setEmailError] = useState("");
   const [numberError, setNumberError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+
+  const { userSignUp } = useContext(StateContext);
+
+  const handleSignUp = (data) => {
+    userSignUp(data.email, data.password)
+      .then(result => {
+        const user = result.user;
+        console.log(user.email);
+        if (user) {
+          navigation.navigate("Home");
+        }
+      }).catch(err => Alert(err.message))
+  }
 
   const isEnableSignUp = () => {
     return email != "" && phoneNumber != "" && password != ""
@@ -122,6 +136,7 @@ const SignUp = ({ navigation }) => {
         <TextButton
           label="Sign Up"
           disabled={isEnableSignUp() ? false : true}
+          onPress={handleSignUp}
           buttonContainerStyle={{
             height: 55,
             alignItems: 'center',

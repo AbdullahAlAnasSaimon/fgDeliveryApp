@@ -8,5 +8,4 @@ export {
   AuthLayout,
   LogIn,
   SignUp
-
 }

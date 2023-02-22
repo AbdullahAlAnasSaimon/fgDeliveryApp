@@ -12,6 +12,7 @@ import icons from '../constants/icons';
 
 import LinearGradient from 'react-native-linear-gradient';
 import History from './History';
+import Home from './Home';
 
 
 
@@ -102,7 +103,7 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
         }}
       >
         {
-          selectedTab == "Home" && <Text>Main Layout</Text>
+          selectedTab == "Home" && <Home/>
         }
         {
           selectedTab == "History" && <History/>
