@@ -6,6 +6,8 @@ import { ScrollView } from 'react-native-gesture-handler';
 import { COLORS, SIZES } from '../constants';
 import { TextButton } from '../components';
 import Loader from '../components/Loader';
+import { useDateTime } from '../hooks/useDateTime';
+import { useNavigation } from '@react-navigation/native';
 
 const Home = () => {
   const { user } = useContext(StateContext);
@@ -30,7 +32,7 @@ const Home = () => {
         marginTop: 10,
         fontSize: 17,
         fontWeight: 700
-      }}>Available Orders: {filteredOrders?.length}</Text>
+      }}>Available Delivery: {filteredOrders?.length}</Text>
       <ScrollView>
         {
           filteredOrders?.map(item => <Card
@@ -46,8 +48,11 @@ const Home = () => {
 export default Home;
 
 const Card = ({ item }) => {
+  const navigation = useNavigation();
+  const [formattedDate] = useDateTime(new Date(item?.deliveryAssignTime))
   return (
     <View style={styles.card}>
+      <Text>Assigned At: {formattedDate}</Text>
       <Text style={{fontWeight: 700}}>Order Id: {item?._id}</Text>
       <Text>Total Ordered Product: {item?.order_products.length}</Text>
       <Text>Total Price: {item?.total_price}৳</Text>
@@ -68,6 +73,9 @@ const Card = ({ item }) => {
       }}
       labelStyle={{
         padding: 8,
+      }}
+      onPress={() => {
+        navigation.navigate("DeliveryDetails", {data: item})
       }}
       />
     </View>
