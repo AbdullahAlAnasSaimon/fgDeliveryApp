@@ -5,9 +5,9 @@ import { useNavigation } from '@react-navigation/native';
 import { useForm, Controller } from 'react-hook-form';
 
 const SignUpScreen = () => {
-  const { userSignUp } = useContext(StateContext);
   const navigation = useNavigation();
   const { control, handleSubmit, formState: { errors } } = useForm();
+  const { userSignUp } = useContext(StateContext);
 
   const handleSignUp = (data) => {
     if(data.password === data.confirmPassword){

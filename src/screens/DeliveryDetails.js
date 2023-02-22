@@ -28,9 +28,10 @@ const DeliveryDetails = ({item, route}) => {
             onPress={() => navigation.goBack()}
           >
             <Image
-              source={icons.goback}
+              source={icons.down_arrow}
               style={{
-                color: COLORS.gray
+                width: 30,
+                height: 30
               }}
             />
           </TouchableOpacity>
