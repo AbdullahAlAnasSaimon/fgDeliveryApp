@@ -1,6 +1,6 @@
 import { Text, View, Image } from 'react-native'
 import React, { useEffect } from 'react';
-import Animated, { useSharedValue, useAnimatedStyle, withTiming } from 'react-native-reanimated';
+import Animated from 'react-native-reanimated';
 import { connect } from 'react-redux';
 import { setSelectedTab } from '../stores/tab/tabActions';
 
