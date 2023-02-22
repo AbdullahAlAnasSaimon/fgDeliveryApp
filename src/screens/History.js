@@ -1,17 +1,19 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { StateContext } from '../context/AuthContext'
 import { useDeliveryHistory } from '../hooks/useDeliveryHistory'
 import { ScrollView } from 'react-native-gesture-handler'
 import { COLORS, SIZES } from '../constants'
 import { TextButton } from '../components'
+import { useDateTime } from '../hooks/useDateTime'
 
 const History = () => {
   const { user } = useContext(StateContext)
   const [deliveriedHistory, deliveredLoading, deliveryRefetch] = useDeliveryHistory(user?.email);
 
-  if(deliveredLoading){
-    return <View style={{flex: 1, justifyContent:'center', alignItems: 'center'}}><Text>Loading...</Text></View>
+
+  if (deliveredLoading) {
+    return <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}><Text>Loading...</Text></View>
   }
 
   deliveryRefetch();
@@ -42,28 +44,31 @@ const History = () => {
 }
 
 const Card = ({ item }) => {
+  const [formattedDate] = useDateTime(new Date(item?.deliveryTime));
+
+
   return (
     <View style={styles.card}>
-      <Text>{item?.deliveryTime}</Text>
-      <Text style={{fontWeight: 700}}>{item?._id}</Text>
+      <Text>{formattedDate}</Text>
+      <Text style={{ fontWeight: 700 }}>{item?._id}</Text>
       <Text>Total Price: {item?.total_price}৳</Text>
       <Text
-      style={{
-        textAlign: 'center',
-        color: COLORS.primary,
-        marginTop: 3,
-        marginBottom: 3
-      }}
+        style={{
+          textAlign: 'center',
+          color: COLORS.primary,
+          marginTop: 3,
+          marginBottom: 3
+        }}
       >{item?.pick}</Text>
       <TextButton
-      label="View Details"
-      buttonContainerStyle={{
-        marginTop: 10,
-        borderRadius: 5
-      }}
-      labelStyle={{
-        padding: 8,
-      }}
+        label="View Details"
+        buttonContainerStyle={{
+          marginTop: 10,
+          borderRadius: 5
+        }}
+        labelStyle={{
+          padding: 8,
+        }}
       />
     </View>
   );
