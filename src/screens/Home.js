@@ -75,7 +75,7 @@ const Card = ({ item }) => {
           padding: 8,
         }}
         onPress={() => {
-          navigation.navigate("DeliveryDetails", { data: item })
+          navigation.navigate("DeliveryDetails", { data: item}, navigation)
         }}
       />
     </View>

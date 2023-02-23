@@ -1,13 +1,32 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
-import React from 'react'
+import React, {useState} from 'react'
 import { Header, TextButton } from '../components'
 import { COLORS, icons, SIZES } from '../constants'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
 import { useNavigation } from '@react-navigation/native'
 
-const DeliveryDetails = ({ route }) => {
-  const navigation = useNavigation();
-  const { _id, address, name, email, order_products, total_price, paid } = route.params.data;
+const DeliveryDetails = ({ route, navigation }) => {
+  // const navigation = useNavigation();
+  const { _id, address, name, email, order_products, total_price, paid, pick } = route.params.data;
+  const [orderPicked, setOrderPicked] = useState(pick);
+
+  const handlePickUp = id => {
+    const picked = "Already Picked";
+
+    fetch(`https://fg-server.vercel.app/delivery-order/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ picked }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.status === true) {
+          setOrderPicked("Picked Item Successfully");
+        }
+      })
+      .catch((err) => (err));
+  }
+
   return (
     <View
       style={{
@@ -45,6 +64,7 @@ const DeliveryDetails = ({ route }) => {
       />
       <ScrollView>
         <View style={styles.card}>
+          {pick && <Text>{pick || orderPicked}</Text>}
           <Text style={styles.title}>{_id}</Text>
           <Text>Name: {name}</Text>
           <Text>Email: {email}</Text>
@@ -58,7 +78,8 @@ const DeliveryDetails = ({ route }) => {
       </ScrollView >
       <TextButton
         label="Pick Up"
-        onPress={() => { }}
+        onPress={() => handlePickUp(_id)}
+        disabled={orderPicked == "Already Picked"}
         buttonContainerStyle={{
           height: 55,
           width: '100%',
@@ -85,7 +106,7 @@ const DetailsCard = ({ order }) => {
         <Image
           source={{ uri: order.imageUrl }}
           style={styles.image2} />
-        <Text style={styles.title2}>{order.name}</Text>
+        <Text numberOfLines={2} ellipsizeMode='tail' style={styles.title2}>{order.name}</Text>
       </View>
     </View>
   );
@@ -125,12 +146,12 @@ const styles = StyleSheet.create({
   },
   textContainer2: {
     flex: 1,
-    flexDirection:'row',
+    flexDirection: 'row',
     backgroundColor: COLORS.lightGray2,
     padding: 10
   },
   title2: {
-    fontSize: 18,
+    fontSize: 17,
     fontWeight: 'bold',
     marginBottom: 10,
   },
