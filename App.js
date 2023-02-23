@@ -15,6 +15,7 @@ import AuthContext from "./src/context/AuthContext";
 import History from "./src/screens/History";
 import { QueryClient, QueryClientProvider } from 'react-query'
 import DeliveryDetails from "./src/screens/DeliveryDetails";
+import PendingDelivery from "./src/screens/PendingDelivery";
 
 const queryClient = new QueryClient();
 
@@ -38,6 +39,7 @@ const App = () => {
               <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
               <Stack.Screen name="Home" component={CustomDrawer} />
               <Stack.Screen name="DeliveryDetails" component={DeliveryDetails} />
+              <Stack.Screen name="PendingDelivery" component={PendingDelivery} />
               <Stack.Screen name="History" component={History} />
               {/* <Stack.Screen name="HomeScreen" component={MainLayout} /> */}
             </Stack.Navigator>
