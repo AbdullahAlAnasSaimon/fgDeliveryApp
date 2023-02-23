@@ -14,6 +14,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import History from './History';
 import Home from './Home';
 import PendingDelivery from './PendingDelivery';
+import Wallet from './Wallet';
 
 
 
@@ -111,6 +112,9 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
         }
         {
           selectedTab == "History" && <History/>
+        }
+        {
+          selectedTab == "Wallet" && <Wallet/>
         }
       </View>
 
