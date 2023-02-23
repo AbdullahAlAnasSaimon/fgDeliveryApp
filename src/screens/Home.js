@@ -14,8 +14,8 @@ const Home = () => {
   const [deliveryOrders, orderLoading, orderRefetch] = useDeliveryOrders(user?.email)
   const filteredOrders = deliveryOrders?.data?.filter(order => !order?.deliver && !order?.pick)
 
-  if(orderLoading){
-    return <Loader/>
+  if (orderLoading) {
+    return <Loader />
   }
 
   orderRefetch();
@@ -53,30 +53,30 @@ const Card = ({ item }) => {
   return (
     <View style={styles.card}>
       <Text>Assigned At: {formattedDate}</Text>
-      <Text style={{fontWeight: 700}}>Order Id: {item?._id}</Text>
+      <Text style={{ fontWeight: 700 }}>Order Id: {item?._id}</Text>
       <Text>Total Ordered Product: {item?.order_products.length}</Text>
       <Text>Total Price: {item?.total_price}৳</Text>
-      <Text style={{fontWeight: 700, color: COLORS.primary}}>{item?.paid ? "Paid" : "Collect Cash"}</Text>
+      <Text style={{ fontWeight: 700, color: COLORS.primary }}>{item?.paid ? "Paid" : "Collect Cash"}</Text>
       <Text
-      style={{
-        textAlign: 'center',
-        color: COLORS.primary,
-        marginTop: 3,
-        marginBottom: 3
-      }}
+        style={{
+          textAlign: 'center',
+          color: COLORS.primary,
+          marginTop: 3,
+          marginBottom: 3
+        }}
       >{item?.pick}</Text>
       <TextButton
-      label="See Details"
-      buttonContainerStyle={{
-        marginTop: 10,
-        borderRadius: 5
-      }}
-      labelStyle={{
-        padding: 8,
-      }}
-      onPress={() => {
-        navigation.navigate("DeliveryDetails", {data: item})
-      }}
+        label="See Details"
+        buttonContainerStyle={{
+          marginTop: 10,
+          borderRadius: 5
+        }}
+        labelStyle={{
+          padding: 8,
+        }}
+        onPress={() => {
+          navigation.navigate("DeliveryDetails", { data: item })
+        }}
       />
     </View>
   );
