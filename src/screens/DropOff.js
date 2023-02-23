@@ -1,31 +1,29 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
 import React, {useState} from 'react'
-import { Header, TextButton } from '../components'
-import { COLORS, icons, SIZES } from '../constants'
-import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
-import { useNavigation } from '@react-navigation/native'
+import { Header, TextButton } from '../components';
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import { COLORS, icons, SIZES } from '../constants';
 
-const DeliveryDetails = ({ route }) => {
+const DropOff = ({route}) => {
   const navigation = useNavigation();
   const { _id, address, name, email, order_products, total_price, paid, pick } = route.params.data;
-  const [orderPicked, setOrderPicked] = useState(pick);
 
-  const handlePickUp = id => {
-    const picked = "Already Picked";
+  const handleDropOff = id =>{
+    const status = "Product Delivery Completed";
 
-    fetch(`https://fg-server.vercel.app/delivery-order/${id}`, {
+    fetch(`https://fg-server.vercel.app/delivery-complete/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ picked }),
+      body: JSON.stringify({ status }),
     })
       .then((res) => res.json())
       .then((data) => {
         if (data?.status === true) {
-          setOrderPicked("Picked Item Successfully");
-          navigation.navigate('Home');
+          navigation.navigate("Home");
         }
       })
-      .catch((err) => (err));
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -42,7 +40,7 @@ const DeliveryDetails = ({ route }) => {
           paddingHorizontal: SIZES.padding,
           alignItems: 'center'
         }}
-        title={"Delivery Details"}
+        title={"Drop Off"}
         leftComponent={
           <TouchableOpacity
             style={{
@@ -65,7 +63,6 @@ const DeliveryDetails = ({ route }) => {
       />
       <ScrollView>
         <View style={styles.card}>
-          {pick && <Text>{pick || orderPicked}</Text>}
           <Text style={styles.title}>{_id}</Text>
           <Text>Name: {name}</Text>
           <Text>Email: {email}</Text>
@@ -73,14 +70,13 @@ const DeliveryDetails = ({ route }) => {
           <Text style={styles.price}>Total: {total_price}৳ </Text>
           <Text style={styles.price}>{!paid ? "Collect Cash" : "Paid"}</Text>
           {/* <View> */}
-          {order_products?.map(order => <DetailsCard key={order?._id} order={order} />)}
+          {order_products?.map(order => <DropOffCard key={order?._id} order={order} />)}
           {/* </View> */}
         </View>
       </ScrollView >
       <TextButton
-        label="Pick Up"
-        onPress={() => handlePickUp(_id)}
-        disabled={orderPicked == "Already Picked"}
+        label="Drop Off"
+        onPress={() => handleDropOff(_id)}
         buttonContainerStyle={{
           height: 55,
           width: '100%',
@@ -98,9 +94,9 @@ const DeliveryDetails = ({ route }) => {
   )
 }
 
-export default DeliveryDetails;
+export default DropOff;
 
-const DetailsCard = ({ order }) => {
+const DropOffCard = ({ order }) => {
   return (
     <View style={styles.card2}>
       <View style={styles.textContainer2}>
