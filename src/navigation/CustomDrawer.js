@@ -150,15 +150,15 @@ const CustomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
             icon={icons.notification}
           />
           <CustomDrawerItem
-            label="Favourite"
+            label="Bonus"
             icon={icons.favourite}
           />
           <CustomDrawerItem
-            label="Track Your Order"
+            label="Take a Break"
             icon={icons.location}
           />
           <CustomDrawerItem
-            label="Coupons"
+            label="Tutorials"
             icon={icons.coupon}
           />
           {/* line divider */}
