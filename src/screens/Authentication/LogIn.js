@@ -143,36 +143,6 @@ const LogIn = ({ navigation }) => {
             backgroundColor: isEnableLogIn() ? COLORS.primary : COLORS.transparentPrimray
           }}
         />
-        
-
-        <View
-          style={{
-            flexDirection: 'row',
-            marginTop: SIZES.radius,
-            justifyContent: 'center'
-          }}
-        >
-          <Text
-            style={{
-              color: COLORS.darkGray,
-              ...FONTS.body3
-            }}
-          >
-            Don't have an account?
-          </Text>
-          <TextButton
-            label="Sign Up"
-            buttonContainerStyle={{
-              backgroundColor: null,
-              marginLeft: 3
-            }}
-            labelStyle={{
-              color: COLORS.primary,
-              ...FONTS.h3
-            }}
-            onPress={() => navigation.navigate("SignUp")}
-          />
-        </View>
       </View>
     </AuthLayout>
   )

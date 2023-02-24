@@ -9,6 +9,12 @@
       android:roundIcon="@mipmap/ic_launcher_round"
       android:allowBackup="false"
       android:theme="@style/AppTheme">
+
+      <meta-data
+      android:name="com.microsoft.maps:maps-sdk:1.2.0"
+      android:value="Ao-FttOFlC5Pyzo1S0P63KNco1QKWGfcGczY4dGhJ0o_lS5vfg8X9OWDBmBt5V4c"
+      />
+
       <activity
         android:name=".MainActivity"
         android:label="@string/app_name"

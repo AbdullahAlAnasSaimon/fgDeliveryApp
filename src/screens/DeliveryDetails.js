@@ -118,7 +118,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 20,
     zIndex: -9999,
-    marginBottom: 50
+    marginBottom: 50,
+  
   },
   title: {
     fontSize: 18,
@@ -152,9 +153,10 @@ const styles = StyleSheet.create({
     padding: 10
   },
   title2: {
-    fontSize: 17,
+    fontSize: 16,
     fontWeight: 'bold',
     marginBottom: 10,
+    width: '75%'
   },
   description2: {
     fontSize: 16,
