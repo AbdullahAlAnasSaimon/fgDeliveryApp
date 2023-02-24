@@ -17,6 +17,8 @@ import { QueryClient, QueryClientProvider } from 'react-query'
 import DeliveryDetails from "./src/screens/DeliveryDetails";
 import PendingDelivery from "./src/screens/PendingDelivery";
 import DropOff from "./src/screens/DropOff";
+import Wallet from "./src/screens/Wallet";
+import Map from "./src/screens/Map";
 
 const queryClient = new QueryClient();
 
@@ -41,7 +43,9 @@ const App = () => {
               <Stack.Screen name="DeliveryDetails" component={DeliveryDetails} />
               <Stack.Screen name="PendingDelivery" component={PendingDelivery} />
               <Stack.Screen name="DropOff" component={DropOff} />
+              <Stack.Screen name="Map" component={Map} />
               <Stack.Screen name="History" component={History} />
+              <Stack.Screen name="Wallet" component={Wallet} />
               {/* <Stack.Screen name="HomeScreen" component={MainLayout} /> */}
             </Stack.Navigator>
           </NavigationContainer>

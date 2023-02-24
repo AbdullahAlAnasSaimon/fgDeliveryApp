@@ -15,6 +15,7 @@ import History from './History';
 import Home from './Home';
 import PendingDelivery from './PendingDelivery';
 import Wallet from './Wallet';
+import Map from './Map';
 
 
 
@@ -112,6 +113,9 @@ const MainLayout = ({ drawerAnimationStyle, navigation, selectedTab, setSelected
         }
         {
           selectedTab == "History" && <History/>
+        }
+        {
+          selectedTab == "Map" && <Map/>
         }
         {
           selectedTab == "Wallet" && <Wallet/>

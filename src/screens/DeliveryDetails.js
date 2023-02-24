@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View, Image } from 'react-native'
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Header, TextButton } from '../components'
 import { COLORS, icons, SIZES } from '../constants'
 import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler'
@@ -107,7 +107,10 @@ const DetailsCard = ({ order }) => {
         <Image
           source={{ uri: order.imageUrl }}
           style={styles.image2} />
-        <Text numberOfLines={2} ellipsizeMode='tail' style={styles.title2}>{order.name}</Text>
+        <View>
+          <Text numberOfLines={2} ellipsizeMode='tail' style={styles.title2}>{order.name}</Text>
+          <Text>Quantity: <Text style={{fontWeight: 'bold'}}>{order.qunatity}</Text></Text>
+        </View>
       </View>
     </View>
   );
@@ -119,7 +122,7 @@ const styles = StyleSheet.create({
     padding: 20,
     zIndex: -9999,
     marginBottom: 50,
-  
+
   },
   title: {
     fontSize: 18,
@@ -153,10 +156,10 @@ const styles = StyleSheet.create({
     padding: 10
   },
   title2: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: 'bold',
-    marginBottom: 10,
-    width: '75%'
+    marginBottom: 6,
+    width: '70%'
   },
   description2: {
     fontSize: 16,
