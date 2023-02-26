@@ -184,7 +184,7 @@ const CustomDrawerContent = ({ navigation, selectedTab, setSelectedTab }) => {
             }}
           />
           <CustomDrawerItem
-            label="Invite a Friend"
+            label="Refer a Friend"
             icon={icons.profile}
           />
           <CustomDrawerItem
